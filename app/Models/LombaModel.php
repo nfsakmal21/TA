@@ -35,7 +35,7 @@ class LombaModel extends Model
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
                     }
-        $return = $return->orderBy('lomba.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('lomba.id', 'desc') -> paginate(7);
         return $return;
     }
 
@@ -62,7 +62,7 @@ class LombaModel extends Model
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
                     }
-        $return = $return->orderBy('lomba.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('lomba.id', 'desc') -> paginate(7);
         return $return;
     }
 

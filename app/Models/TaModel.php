@@ -43,7 +43,7 @@ class TaModel extends Model
                     if(!empty(Request::get('status'))){
                         $return = $return->where('status', 'like', '%'.Request::get('status').'%');
                     }
-        $return = $return->orderBy('ta.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('ta.id', 'desc') -> paginate(7);
         return $return;
     }
 

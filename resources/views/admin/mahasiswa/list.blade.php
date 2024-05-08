@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label>NIM</label>
-                      <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="email" placeholder="Masukan NIM">
+                      <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="nim" placeholder="Masukan NIM">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>

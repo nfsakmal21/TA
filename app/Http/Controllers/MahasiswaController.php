@@ -14,7 +14,7 @@ use Str;
 class MahasiswaController extends Controller
 {
     public function list(){
-        $data['getRecord'] = User::getJoinedData();
+        $data['getRecord'] = User::getJoinedDatas();
         $data['header_title'] = "Daftar Mahasiswa";
         return view('admin.mahasiswa.list', $data);
     }
@@ -39,6 +39,11 @@ class MahasiswaController extends Controller
         $mahasiswa->password = Hash::make($request->password);
         $mahasiswa->user_type = 3;
         $mahasiswa->save();
+
+        $perwalian = new PerwalianModel;
+        $perwalian->name = trim($request->name);
+        $perwalian->status = 0;
+        $perwalian->save();
 
         return redirect('admin/mahasiswa/list')->with('sukses', "Mahasiswa berhasil ditambah");
     }

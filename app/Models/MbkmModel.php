@@ -26,7 +26,7 @@ class MbkmModel extends Model
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
                     }
-        $return = $return->orderBy('mbkm.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('mbkm.id', 'desc') -> paginate(7);
         return $return;
     }
     static public function getRecords($nim){
@@ -43,7 +43,7 @@ class MbkmModel extends Model
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
                     }
-        $return = $return->orderBy('mbkm.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('mbkm.id', 'desc') -> paginate(7);
         return $return;
     }
 

@@ -14,7 +14,7 @@
             <form id="form-hadir" action="{{ url('admin/perwalian/seluruh/') }}" method="POST" style="display: inline;">
             @csrf
             @method('POST')
-            <button type="submit" class="btn btn-danger">Tidak Hadir</button>
+            <button type="submit" class="btn btn-danger">Reset Presensi</button>
         </form>        
           </div>
         </div>
@@ -41,6 +41,10 @@
                     <div class="form-group col-md-3">
                       <label>Nama</label>
                       <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Nama Perwalian</label>
+                      <input type="text" class="form-control" value="{{ Request::get('pname')}}" name="pname" placeholder="Masukan Nama">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
@@ -76,19 +80,21 @@
                         <td>{{$value->perwalian_name}}</td>
                         <td>
     
-    @if($value->status == 2)
-        <form id="form-hadir-{{$value->id}}" action="{{ url('admin/perwalian/updatetidakhadir/'.$value->id) }}" method="POST" style="display: inline;">
+   
+        @if($value->status == 2)
+                        <form id="form-hadir-{{$value->id}}" action="{{ url('admin/perwalian/updatetidakhadir/'.$value->id) }}" method="POST" style="display: inline;">
             @csrf
             @method('POST')
             <button type="submit" class="btn btn-primary">Lulus</button>
         </form>
-        @else
+      @else
         <form id="form-tidak-hadir-{{$value->id}}" action="{{ url('admin/perwalian/updatehadir/'.$value->id) }}" method="POST" style="display: inline;">
             @csrf
             @method('POST')
             <button type="submit" class="btn btn-danger">Belum Lulus</button>
         </form>
-    @endif
+      @endif
+ 
 </td>
 
                       </tr>

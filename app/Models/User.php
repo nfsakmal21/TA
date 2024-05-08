@@ -87,9 +87,34 @@ class User extends Authenticatable
     }
     static public function getJoinedData()
     {
+        $return = User::join('perwalian', 'users.name', '=', 'perwalian.name')
+                    ->select('users.perwalian as userper')->join('users as users2', 'users.perwalian', '=', 'users2.id')
+                    ->select('perwalian.*', 'users2.name as perwalian_name');
+                    if(!empty(Request::get('name'))){
+                            $return = $return->where('perwalian.name',  'like', '%'.Request::get('name').'%');
+                        }
+                        if(!empty(Request::get('pname'))){
+                            $return = $return->where('users2.name',  'like', '%'.Request::get('pname').'%');
+                        }
+                    $return = $return->orderBy('perwalian.id', 'desc') // Menggunakan 'perwalian.id' untuk mengurutkan hasil
+                    ->paginate(10);
+                
+
+        return $return;
+    }
+    static public function getJoinedDatas()
+    {
         $return = self::join('users as users2', 'users.perwalian', '=', 'users2.id')
                     ->select('users.*', 'users2.name as perwalian_name');
-        
+                    if(!empty(Request::get('name'))){
+                        $return = $return->where('users.name',  'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('email'))){
+                        $return = $return->where('users.email', 'like', '%'.Request::get('email').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('users.nim', 'like', '%'.Request::get('nim').'%');
+                    }
                     $return = $return->orderBy('id', 'desc') 
                     -> paginate(10);
 

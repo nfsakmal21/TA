@@ -17,7 +17,7 @@ class PerwalianModel extends Model
                     if(!empty(Request::get('name'))){
                         $return = $return->where('name', 'like', '%'.Request::get('name').'%');
                     }
-        $return = $return->orderBy('perwalian.id', 'desc') -> paginate(10);
+        $return = $return->orderBy('perwalian.id', 'desc') -> paginate(7);
         return $return;
     }
 

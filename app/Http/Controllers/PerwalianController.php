@@ -43,7 +43,7 @@ class PerwalianController extends Controller
     public function seluruh(){
         PerwalianModel::where('status', 1)->update(['status' => 0]);
 
-        return redirect('admin/perwalian/list')->with('sukses', "Perwalian berhasil diupdate");
+        return redirect('admin/perwalian/list')->with('sukses', "Presensi berhasil Direset");
     }
 
     public function updatehadir($id, Request $request){
