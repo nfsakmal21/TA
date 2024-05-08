@@ -71,6 +71,7 @@ class MahasiswaController extends Controller
         $mahasiswa->name = trim($request->name);
         $mahasiswa->nim = trim($request->nim);
         $mahasiswa->email = trim($request->email);
+        $mahasiswa->perwalian = trim($request->perwalian);
         if(!empty($request->password)){
 
             $mahasiswa->password = Hash::make($request->password);

@@ -104,8 +104,8 @@ class User extends Authenticatable
     }
     static public function getJoinedDatas()
     {
-        $return = self::join('users as users2', 'users.perwalian', '=', 'users2.id')
-                    ->select('users.*', 'users2.name as perwalian_name');
+        $return = self::leftJoin('users as users2', 'users.perwalian', '=', 'users2.id')
+                        ->select('users.*', 'users2.name as perwalian_name')->where('users.user_type', '=', 3);
                     if(!empty(Request::get('name'))){
                         $return = $return->where('users.name',  'like', '%'.Request::get('name').'%');
                     }
