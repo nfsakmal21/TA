@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2024 at 09:48 AM
+-- Generation Time: May 15, 2024 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,6 +51,7 @@ CREATE TABLE `kkn` (
   `semester` int(11) NOT NULL COMMENT 'ket: 0=ganjil 1=genap',
   `lokasi` varchar(250) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT 'ket: 0=belum selesai 1= selesai',
+  `dosen` varchar(255) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,10 +60,8 @@ CREATE TABLE `kkn` (
 -- Dumping data for table `kkn`
 --
 
-INSERT INTO `kkn` (`id`, `name`, `nim`, `tahun`, `semester`, `lokasi`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Mochamad Nafis Akmalussyifa', '119140135', '2022', 0, 'Desa Pahmungan, Pesisir Barat, Lampung', 0, '2024-05-04', '2024-05-04'),
-(7, 'Mahasiswa', '123456789', '2022', 1, 'Desa Pahmungan, Pesisir Barat, Lampung', 0, '2024-05-07', '2024-05-07'),
-(8, 'Ilham Nofri Yandra', '119140133', '2022', 1, 'sgsgdh', 0, '2024-05-07', '2024-05-07');
+INSERT INTO `kkn` (`id`, `name`, `nim`, `tahun`, `semester`, `lokasi`, `status`, `dosen`, `created_at`, `updated_at`) VALUES
+(9, 'Aprian Yusuf Nugroho', '118140144', '2022', 0, 'Desa Pahmungan, Pesisir Barat, Lampung', 1, 'Andi Muhammad Gabriel', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -79,6 +78,7 @@ CREATE TABLE `kp` (
   `lokasi` varchar(250) DEFAULT NULL,
   `status` int(20) NOT NULL COMMENT '0 = selesai, 1 = belum selesai',
   `sertifikat` varchar(100) DEFAULT NULL,
+  `dosen` int(5) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,9 +87,8 @@ CREATE TABLE `kp` (
 -- Dumping data for table `kp`
 --
 
-INSERT INTO `kp` (`id`, `name`, `nim`, `tahun`, `semester`, `lokasi`, `status`, `sertifikat`, `created_at`, `updated_at`) VALUES
-(1, 'Mochamad Nafis Akmalussyifa', '119140135', '2023', 0, 'BPKAD Bandar Lampung', 0, 'btyjlt6etit5hmumqrvm.jpg', '2024-05-04', '2024-05-04'),
-(6, 'Ilham Nofri Yandra', '119140133', '2023', 0, 'dhzhdhdr', 0, 'r0taekjlwgjevhuhnjit.pdf', '2024-05-07', '2024-05-07');
+INSERT INTO `kp` (`id`, `name`, `nim`, `tahun`, `semester`, `lokasi`, `status`, `sertifikat`, `dosen`, `created_at`, `updated_at`) VALUES
+(9, 'Aprian Yusuf Nugroho', '118140144', '2024', 0, 'PT Sukamaju', 0, 'unk4hzosmd1ygqlgbty1.png', 53, '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -107,6 +106,7 @@ CREATE TABLE `lomba` (
   `capaian` varchar(250) DEFAULT NULL,
   `tahun` int(20) DEFAULT NULL,
   `sertifikat` varchar(250) DEFAULT NULL,
+  `dosen` varchar(255) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -115,9 +115,8 @@ CREATE TABLE `lomba` (
 -- Dumping data for table `lomba`
 --
 
-INSERT INTO `lomba` (`id`, `name`, `nim`, `nama_lomba`, `penyelenggara`, `tingkat`, `capaian`, `tahun`, `sertifikat`, `created_at`, `updated_at`) VALUES
-(1, 'Mochamad Nafis Akmalussyifa', 119140135, 'fkeofkeokdskfndisfmn', 'rggadfsgerdg', 0, 'Juara 1', 2022, 'zeaveokhdn9akopzsscq.jpg', '2024-05-05', '2024-05-05'),
-(5, 'Ilham Nofri Yandra', 119140133, 'dhdhdfdh', 'dhdhdfgdh', 0, 'Juara 1', 2023, 'rjfl6an7k3e8ng7bi3jz.pdf', '2024-05-07', '2024-05-07');
+INSERT INTO `lomba` (`id`, `name`, `nim`, `nama_lomba`, `penyelenggara`, `tingkat`, `capaian`, `tahun`, `sertifikat`, `dosen`, `created_at`, `updated_at`) VALUES
+(7, 'Aprian Yusuf Nugroho', 118140144, 'Alphaseismic', 'PT SUKAMAJU', 1, 'Juara 1', 2022, 'd0ytholowvpvbim49k4k.docx', 'Andi Muhammad Gabriel', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -129,9 +128,10 @@ CREATE TABLE `mbkm` (
   `id` int(20) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `nim` varchar(20) DEFAULT NULL,
-  `program` int(11) DEFAULT NULL,
+  `program` varchar(250) DEFAULT NULL,
   `tahun` int(20) DEFAULT NULL,
   `sertifikat` varchar(250) DEFAULT NULL,
+  `dosen` varchar(250) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -140,9 +140,8 @@ CREATE TABLE `mbkm` (
 -- Dumping data for table `mbkm`
 --
 
-INSERT INTO `mbkm` (`id`, `name`, `nim`, `program`, `tahun`, `sertifikat`, `created_at`, `updated_at`) VALUES
-(1, 'Mochamad Nafis Akmalussyifa', '119140135', 0, 2021, 'uv9at6a9eukhdh2itttf.jpg', '2024-05-05', '2024-05-05'),
-(4, 'Mochamad Nafis Akmalussyifa', '119140135', 0, 2021, '8scnyhylkyt6azlg3lpx.pdf', '2024-05-05', '2024-05-05');
+INSERT INTO `mbkm` (`id`, `name`, `nim`, `program`, `tahun`, `sertifikat`, `dosen`, `created_at`, `updated_at`) VALUES
+(5, 'Aprian Yusuf Nugroho', '118140144', 'Kampus Merdeka', 2022, 'njk6dgbyxbdvvkirk0h2.docx', 'Andi Muhammad Gabriel', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -205,7 +204,8 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `perwalian` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `nim` int(20) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0 COMMENT '0:nonaktif 1:aktif 2:lulus',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -215,17 +215,29 @@ CREATE TABLE `perwalian` (
 -- Dumping data for table `perwalian`
 --
 
-INSERT INTO `perwalian` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'test', 2, '2024-05-02 12:47:32', '2024-05-08 12:57:07'),
-(3, 'Mahasiswa', 0, '2024-05-02 13:47:43', '2024-05-08 14:29:33'),
-(4, 'test', 0, NULL, '2024-05-08 14:29:30'),
-(5, 'Mario', 1, '2024-05-08 14:03:48', '2024-05-08 14:33:23'),
-(6, 'Mochamad Nafis Akmalussyifa', 0, '2024-05-08 14:23:35', '2024-05-08 14:23:35'),
-(7, 'Ilham Nofri Yandra', 0, '2024-05-08 14:23:58', '2024-05-08 14:23:58'),
-(8, 'Bintang Yosafat Putra', 0, '2024-05-08 14:24:48', '2024-05-08 14:24:48'),
-(9, 'Dwi Pangga Sinurat', 1, '2024-05-08 14:25:37', '2024-05-08 14:33:22'),
-(10, 'Yovan Mayliano Gultom', 0, '2024-05-08 14:26:17', '2024-05-08 14:26:17'),
-(11, 'Muhammad Yahya Ayyashy', 1, '2024-05-08 14:26:49', '2024-05-08 14:33:20');
+INSERT INTO `perwalian` (`id`, `name`, `nim`, `status`, `created_at`, `updated_at`) VALUES
+(16, 'Aprian Yusuf Nugroho', 118140144, 1, '2024-05-15 15:24:36', '2024-05-15 16:23:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesan`
+--
+
+CREATE TABLE `pesan` (
+  `id` int(11) NOT NULL,
+  `dosen_id` int(20) NOT NULL,
+  `pesan` longtext NOT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`id`, `dosen_id`, `pesan`, `created_at`, `updated_at`) VALUES
+(3, 53, 'Perwalian di ruang prodi hari senin', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -237,9 +249,10 @@ CREATE TABLE `pkm` (
   `id` int(20) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `nim` int(20) DEFAULT NULL,
-  `program` int(20) NOT NULL,
+  `program` varchar(250) NOT NULL,
   `tahun` int(20) DEFAULT NULL,
   `sertifikat` varchar(250) DEFAULT NULL,
+  `dosen` varchar(250) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -248,8 +261,8 @@ CREATE TABLE `pkm` (
 -- Dumping data for table `pkm`
 --
 
-INSERT INTO `pkm` (`id`, `name`, `nim`, `program`, `tahun`, `sertifikat`, `created_at`, `updated_at`) VALUES
-(1, 'Mochamad Nafis Akmalussyifa', 119140135, 0, 2024, '7rpkqelsh1jqy8tq8uux.png', '2024-05-05', '2024-05-05');
+INSERT INTO `pkm` (`id`, `name`, `nim`, `program`, `tahun`, `sertifikat`, `dosen`, `created_at`, `updated_at`) VALUES
+(5, 'Aprian Yusuf Nugroho', 118140144, 'PKM-R', 2023, 'puat0neacy42zmn0d48l.docx', 'Andi Muhammad Gabriel', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -263,6 +276,10 @@ CREATE TABLE `ta` (
   `nim` varchar(20) DEFAULT NULL,
   `judul` varchar(250) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '0 = Sempro, 1 = Sidang Akhir 3=selesai',
+  `pem1` varchar(255) NOT NULL,
+  `pem2` varchar(255) NOT NULL,
+  `peng1` varchar(255) NOT NULL,
+  `peng2` varchar(255) NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -271,9 +288,8 @@ CREATE TABLE `ta` (
 -- Dumping data for table `ta`
 --
 
-INSERT INTO `ta` (`id`, `name`, `nim`, `judul`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Mochamad Nafis Akmalussyifa', '119140135', 'sgfshfgjosunofn', 0, '2024-05-04', '2024-05-04'),
-(5, 'Ilham Nofri Yandra', '119140133', 'dhdhdhdfd', 2, '2024-05-07', '2024-05-07');
+INSERT INTO `ta` (`id`, `name`, `nim`, `judul`, `status`, `pem1`, `pem2`, `peng1`, `peng2`, `created_at`, `updated_at`) VALUES
+(12, 'Aprian Yusuf Nugroho', '118140144', 'Rancang Bangun', 0, 'Andika Setiawan, S.Kom., M.Cs.', 'Khabib Nurmagomedov', 'Imam Eko Wicaksono, S.Si., M.Si.', 'Aryogi Aziz', '2024-05-15', '2024-05-15');
 
 -- --------------------------------------------------------
 
@@ -283,40 +299,30 @@ INSERT INTO `ta` (`id`, `name`, `nim`, `judul`, `status`, `created_at`, `updated
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `nip` int(20) DEFAULT NULL,
-  `nim` varchar(50) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nip` varchar(255) DEFAULT NULL,
+  `nim` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `perwalian` int(11) DEFAULT NULL,
-  `profil_picture` varchar(100) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `profil_picture` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '1:admin, 2:dosen, 3:mahasiswa',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `nip`, `nim`, `perwalian`, `profil_picture`, `email`, `email_verified_at`, `password`, `remember_token`, `user_type`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', NULL, NULL, NULL, NULL, 'admin@gmail.com', NULL, '$2y$12$gUx2UWkUMOjs1PatgKBYNekiUHq6nPhPzFlF1ZHbhqgJTkM1OLMy6', NULL, 1, '2024-05-01 12:21:25', '2024-05-01 12:23:21'),
-(2, 'Dosen', 123, NULL, NULL, NULL, 'dosen@gmail.com', NULL, '$2y$12$gUx2UWkUMOjs1PatgKBYNekiUHq6nPhPzFlF1ZHbhqgJTkM1OLMy6', NULL, 2, '2024-05-01 04:50:22', '2024-05-01 04:50:22'),
-(10, 'Test Admin', NULL, NULL, NULL, NULL, 'testadmin@gmail.com', NULL, '$2y$12$CM5fdqy3tU/LtVKn/4rLSeKnuXNlIPUlhDFZZNGS3kuzv3vbh60Le', NULL, 1, '2024-05-02 00:45:40', '2024-05-02 00:45:40'),
-(20, 'Test Dosen', 121212121, NULL, NULL, 'lmkyhvcicqkwuhmxl5nn.jpg', 'testdosen@gmail.com', NULL, '$2y$12$4pDxm7vRYRRpBCuHgTVkse0Bt10h.B7VM7PA1fbPxmc7Xx1Y9tIaG', NULL, 2, '2024-05-03 02:19:03', '2024-05-03 02:19:03'),
-(23, 'Tes Admin', 123456789, NULL, NULL, NULL, 'tesadmin@gmail.com', NULL, '$2y$12$yLKCQoeIvq3UNFjE6pbZYuTYjjmg6U5bnZGLNC8umC/u4CKfCSaLG', NULL, 1, '2024-05-03 02:42:26', '2024-05-03 02:42:26'),
-(25, 'Mahasiswa', NULL, '123456789', 2, 'qca2a5cbq1ixmuyiuzzp.jpg', 'mahasiswa@gmail.com', NULL, '$2y$12$zF6Cdm9Wji2z64YWK..G.e3oOUP3pp192YJ2ZGMQ.9KGFzffpzmHW', NULL, 3, '2024-05-03 04:05:46', '2024-05-03 04:05:46'),
-(29, 'test', NULL, '123123123', 2, NULL, 'test@gmail.com', NULL, '$2y$12$oAgdtJUMKhVCbS6mhzmJ8e7ie3VEYv3FHnythi28Uj9/rizH7W7iu', NULL, 3, '2024-05-06 21:22:25', '2024-05-07 15:41:59'),
-(30, 'Andi Muhammad Gabriel', 123123123, NULL, NULL, NULL, 'andi@gmail.com', NULL, '$2y$12$WQ.CfcmOatJp45MMml1SYeNe7q4RI522FbbkbMIkSZ9NWCj0/zmd6', NULL, 2, '2024-05-07 15:34:22', '2024-05-07 15:34:22'),
-(38, 'Mario', NULL, '119140179', 30, NULL, 'mario.119140179@gmail.com', NULL, '$2y$12$8vCYcINmfUIU5hhajymjlOiH0MUfagquRTZXtbHNlHlRQhjzO7Jp6', NULL, 3, '2024-05-08 07:03:48', '2024-05-08 07:03:48'),
-(39, 'Mochamad Nafis Akmalussyifa', NULL, '119140135', 2, NULL, 'mochamad.119140135@gmail.com', NULL, '$2y$12$gBoaGkqXC.rSenwrwUSuuOxk6Q1qnhPGluVSztgGE66Gt0AXHqLLu', NULL, 3, '2024-05-08 07:23:35', '2024-05-08 07:23:35'),
-(40, 'Ilham Nofri Yandra', NULL, '119140133', 20, NULL, 'ilham.119140133@gmail.com', NULL, '$2y$12$pgSRaTGPceC58fmHsFUwoOg4qZ8/7DWVxzty16EsJyafAqp/YciHK', NULL, 3, '2024-05-08 07:23:58', '2024-05-08 07:23:58'),
-(41, 'Bintang Yosafat Putra', NULL, '119140185', 20, NULL, 'bintang.119140185@gmail.com', NULL, '$2y$12$gX1OtzI3MzHs4XhH/pIxtex.YFubJOM6Ox2dRhQPjJ/90A3KwScCS', NULL, 3, '2024-05-08 07:24:48', '2024-05-08 07:24:48'),
-(42, 'Dwi Pangga Sinurat', NULL, '119140132', 30, NULL, 'dwi.119140132@gmail.com', NULL, '$2y$12$IGefLL2d0wTaWznDDknIl.cq86XF6YTzdr9//K8PNknsZmIj0eaze', NULL, 3, '2024-05-08 07:25:37', '2024-05-08 07:25:37'),
-(43, 'Yovan Mayliano Gultom', NULL, '119140136', 20, NULL, 'yovan.119140136@gmail.com', NULL, '$2y$12$KhxH7xG83kmdqHwjnIuX..qiJtcGnHYQL1Fr8qFyuvhRII8/7Fnla', NULL, 3, '2024-05-08 07:26:17', '2024-05-08 07:26:17'),
-(44, 'Muhammad Yahya Ayyashy', NULL, '119140134', 30, NULL, 'muhammad.119140134@gmail.com', NULL, '$2y$12$coUKKWPceHtayeXTQfcO/..UKFl6xrxC4agxw0SA8MHEBYIYhUiMy', NULL, 3, '2024-05-08 07:26:49', '2024-05-08 07:26:49');
+INSERT INTO `users` (`id`, `name`, `nip`, `nim`, `perwalian`, `profil_picture`, `username`, `password`, `remember_token`, `user_type`, `created_at`, `updated_at`, `status`) VALUES
+(1, 'Admin', NULL, NULL, NULL, NULL, 'admin@gmail.com', '$2y$12$gUx2UWkUMOjs1PatgKBYNekiUHq6nPhPzFlF1ZHbhqgJTkM1OLMy6', NULL, 1, '2024-05-01 12:21:25', '2024-05-01 12:23:21', NULL),
+(53, 'Andika Setiawan, S.Kom., M.Cs.', '199111272022031007', NULL, NULL, NULL, 'Andika', '$2y$12$UuBaUj4jiupnAjNHFHL3veNy.G43gETizFP.68kBJxyOkVB/7XqsG', NULL, 2, '2024-05-15 08:19:23', '2024-05-15 08:19:23', 'Aktif'),
+(54, 'Arief Ichwani, S.Kom., M.Cs', '199008112019031011', NULL, NULL, NULL, 'Arief', '$2y$12$kCnwO0Z36tmniU43U6aei.C7dPWwj.otDVr6MfD7w1yWqAkI1eU2e', NULL, 2, '2024-05-15 08:20:41', '2024-05-15 08:23:18', 'Tugas Belajar'),
+(55, 'Imam Eko Wicaksono, S.Si., M.Si.', '198905172019031013', NULL, NULL, NULL, 'Imam', '$2y$12$flfzWqC/r1dvpTFgmYOezuvOXf5PKVYvvvf2Bj9z8FJDOzk4WY0Ji', NULL, 2, '2024-05-15 08:21:55', '2024-05-15 08:23:25', 'Tugas Belajar'),
+(56, 'Aprian Yusuf Nugroho', NULL, '118140144', 53, NULL, 'Aprian.118140144', '$2y$12$xj53T6qdKUXAuv5XDsE6ZugwArtEeU5ppN0KxFggAo50BlPR00hfi', NULL, 3, '2024-05-15 08:24:36', '2024-05-15 09:23:18', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -380,6 +386,12 @@ ALTER TABLE `perwalian`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `pesan`
+--
+ALTER TABLE `pesan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pkm`
 --
 ALTER TABLE `pkm`
@@ -395,8 +407,7 @@ ALTER TABLE `ta`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -412,25 +423,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kkn`
 --
 ALTER TABLE `kkn`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `kp`
 --
 ALTER TABLE `kp`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `lomba`
 --
 ALTER TABLE `lomba`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mbkm`
 --
 ALTER TABLE `mbkm`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -448,25 +459,31 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `perwalian`
 --
 ALTER TABLE `perwalian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `pesan`
+--
+ALTER TABLE `pesan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pkm`
 --
 ALTER TABLE `pkm`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ta`
 --
 ALTER TABLE `ta`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
