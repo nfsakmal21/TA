@@ -16,6 +16,24 @@ class KpController extends Controller
         return view('admin.kp.list', $data);
     }
 
+    public function exportToCSV()
+    {
+        $data = KpModel::kpadmin();  
+
+        $fileName = 'data.csv';
+        $filePath = ('upload/' . $fileName);
+
+        $file = fopen($filePath, 'w');
+
+        fputcsv($file, array('id', 'Name', 'NIM', 'Nama Perusahaan','Tahun Pelaksanaan','Semester Pelaksanaan','Dosen Pembimbing','Status')); 
+
+        foreach ($data as $row) {
+            fputcsv($file, array($row->id, $row->name, $row->nim,$row->lokasi, $row->tahun, $row->semester,$row->perwalian_name,$row->status)); 
+        }
+        fclose($file);
+
+        return response()->download($filePath)->deleteFileAfterSend(true);
+    }
     public function create(){
         $data['header_title'] = "Tambah Data KP";
         $data['getRecord'] = User::getDosen(); 

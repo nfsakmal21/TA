@@ -11,6 +11,11 @@
             <h1>Data Tugas Akhir (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+          <form id="form-hadir" action="{{ url('dosen/ta/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form>  
             <a href="{{url('dosen/ta/create')}}" class="btn btn-primary">Tambah Data</a>        
           </div>
         </div>
@@ -50,9 +55,9 @@
                       <label>Status</label>
                       <!-- <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status"> -->
                       <select class="form-control" name="status" value="{{ Request::get('status')}}">
-                      <option value="0">Seminar Proposal</option>
-                      <option value="1">Sidang Akhir</option>
-                      <option value="2">Selesai</option>
+                      <option value="Seminar Proposal">Seminar Proposal</option>
+                      <option value="Sidang Akhir">Sidang Akhir</option>
+                      <option value="Selesai">Selesai</option>
                     </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -110,14 +115,7 @@
                         <td>{{$value->name}}</td>
                         <td>{{$value->nim}}</td>
                         <td>{{$value->judul}}</td>
-                        <td>
-                          @if($value->status == 0)
-                            Seminar Proposal
-                          @elseif($value->status == 1)
-                            Sidang Akhir
-                          @else
-                            Selesai
-                          @endif
+                        <td>{{$value->status}}
                         </td>
                         <td>{{$value->pem1}}</td>
                         <td>{{$value->pem2}}</td>

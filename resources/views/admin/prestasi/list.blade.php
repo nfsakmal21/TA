@@ -11,6 +11,11 @@
             <h1>Data Prestasi (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+<form id="form-hadir" action="{{ url('admin/prestasi/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form>  
             <a href="{{url('admin/prestasi/create')}}" class="btn btn-primary">Tambah Data</a>        
           </div>
         </div>
@@ -107,12 +112,7 @@
                         <td>{{$value->nim}}</td>
                         <td>{{$value->nama_lomba}}</td>
                         <td>{{$value->penyelenggara}}</td>
-                        <td>
-                          @if($value->tingkat == 0)
-                            Nasioanal
-                          @else
-                            Internasional
-                          @endif
+                        <td>{{$value->tingkat}}
                         </td>
                         <td>{{$value->capaian}}</td>
                         <td>{{$value->tahun}}</td>

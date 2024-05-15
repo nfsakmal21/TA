@@ -16,6 +16,11 @@
             Mahasiswa Meninggal : {{$TotalMahasiswaalm}}</p>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+          <form id="form-hadir" action="{{ url('admin/mahasiswa/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form>  
             <a href="{{url('admin/mahasiswa/create')}}" class="btn btn-primary">Tambah Mahasiswa</a>        
           </div>
         </div>

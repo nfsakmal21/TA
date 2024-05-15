@@ -54,20 +54,10 @@
                         <td>{{$value->nim}}</td>
                         <td>{{$value->lokasi}}</td>
                         <td>{{$value->tahun}}</td>
-                        <td>
-                          @if($value->semester == 0)
-                            Gasal
-                          @else
-                            Genap
-                          @endif
+                        <td>{{$value->semester}}
                         </td>
                         <td>{{$value->dosen}}</td>
-                        <td>
-                          @if($value->status == 0)
-                            Selesai
-                          @else
-                            Belum Selesai
-                          @endif                          
+                        <td>{{$value->status}}          
                         </td>
                         <td>
                           <a href="{{url('mahasiswa/kkn/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>

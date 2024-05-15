@@ -16,6 +16,25 @@ class MbkmDosenController extends Controller
         return view('dosen.mbkm.list', $data);
     }
 
+    public function exportToCSV()
+    {
+        $test = Auth::user()->id ;
+        $data = MbkmModel::mbkmdosen($test); 
+
+        $fileName = 'data.csv';
+        $filePath = ('upload/' . $fileName);
+
+        $file = fopen($filePath, 'w');
+
+        fputcsv($file, array('id', 'Name', 'NIM', 'Program','Tahun','Dosen')); 
+
+        foreach ($data as $row) {
+            fputcsv($file, array($row->id, $row->name, $row->nim,$row->program, $row->tahun, $row->dosen)); 
+        }
+        fclose($file);
+
+        return response()->download($filePath)->deleteFileAfterSend(true);
+    }
     public function create(){
         $data['header_title'] = "Tambah Data MBKM";
         return view('dosen.mbkm.create', $data);

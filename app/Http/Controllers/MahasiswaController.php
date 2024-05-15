@@ -24,6 +24,24 @@ class MahasiswaController extends Controller
         return view('admin.mahasiswa.list', $data);
     }
 
+    public function exportToCSV()
+    {
+        $data = User::getJoinedDatas(); 
+
+        $fileName = 'data.csv';
+        $filePath = ('upload/' . $fileName);
+
+        $file = fopen($filePath, 'w');
+
+        fputcsv($file, array('id', 'Name', 'Username', 'NIM','Perwalian','Status')); 
+
+        foreach ($data as $row) {
+            fputcsv($file, array($row->id, $row->name, $row->username,$row->nim, $row->perwalian_name, $row->status)); 
+        }
+        fclose($file);
+
+        return response()->download($filePath)->deleteFileAfterSend(true);
+    }
     public function create(){
         $data['header_title'] = "Tambah Mahasiswa";
         $data['getRecord'] = User::getDosen(); 

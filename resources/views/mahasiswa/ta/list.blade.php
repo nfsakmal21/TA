@@ -54,14 +54,7 @@
                         <td>{{$value->name}}</td>
                         <td>{{$value->nim}}</td>
                         <td>{{$value->judul}}</td>
-                        <td>
-                          @if($value->status == 0)
-                            Seminar Proposal
-                          @elseif($value->status == 1)
-                            Sidang Akhir
-                          @else
-                            Selesai
-                          @endif
+                        <td>{{$value->status}}
                         </td>
                         <td>{{$value->pem1}}</td>
                         <td>{{$value->pem2}}</td>

@@ -140,9 +140,9 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status" value="{{old('status')}}">
-                      <option value="0">Seminar Proposal</option>
-                      <option value="1">Sidang Akhir</option>
-                      <option value="2">Selesai</option>
+                      <option value="Seminar Proposal">Seminar Proposal</option>
+                      <option value="Sidang Akhir">Sidang Akhir</option>
+                      <option value="Selesai">Selesai</option>
                     </select>
                   </div>
                 </div>

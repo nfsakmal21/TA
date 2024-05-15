@@ -46,8 +46,8 @@
                   <div class="form-group">
                     <label>Semester</label>
                     <select class="form-control" name="semester" value="{{old('semester', $getRecord->semester)}}">
-                      <option value="0">Gasal</option>
-                      <option value="1">Genap</option>
+                      <option value="Gasal">Gasal</option>
+                      <option value="Genap">Genap</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -57,8 +57,8 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status" value="{{old('status', $getRecord->status)}}">
-                      <option value="0">Selesai</option>
-                      <option value="1">Belum Selesai</option>
+                      <option value="Selesai">Selesai</option>
+                      <option value="Belum Selesai">Belum Selesai</option>
                     </select>
                   </div>
                 </div>

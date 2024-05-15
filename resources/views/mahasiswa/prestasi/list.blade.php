@@ -56,12 +56,7 @@
                         <td>{{$value->nim}}</td>
                         <td>{{$value->nama_lomba}}</td>
                         <td>{{$value->penyelenggara}}</td>
-                        <td>
-                          @if($value->tingkat == 0)
-                            Nasioanal
-                          @else
-                            Internasional
-                          @endif
+                        <td>{{$value->tingkat}}
                         </td>
                         <td>{{$value->capaian}}</td>
                         <td>{{$value->tahun}}</td>

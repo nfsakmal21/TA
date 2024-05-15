@@ -46,8 +46,8 @@
                   <div class="form-group">
                     <label>Tingkatan Lomba</label>
                     <select class="form-control" name="tingkat" value="{{old('tingkat', $getRecord->tingkat)}}">
-                      <option value="0">Nasional</option>
-                      <option value="1">Internasional</option>
+                      <option value="Nasional">Nasional</option>
+                      <option value="Internasional">Internasional</option>
                     </select>
                   </div>
                   <div class="form-group">

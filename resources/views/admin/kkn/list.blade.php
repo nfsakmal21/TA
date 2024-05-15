@@ -11,6 +11,11 @@
             <h1>Data Kuliah Kerja Nyata (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+          <form id="form-hadir" action="{{ url('admin/kkn/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form> 
             <a href="{{url('admin/kkn/create')}}" class="btn btn-primary">Tambah Data</a>        
           </div>
         </div>
@@ -50,16 +55,16 @@
                       <label>Semester Pelaksanaan</label>
                       <!-- <input type="text" class="form-control" value="{{ Request::get('semester')}}" name="semester" placeholder="Masukan Semester"> -->
                       <select class="form-control" name="semester" value="{{ Request::get('semester')}}">
-                      <option value="0">Gasal</option>
-                      <option value="1">Genap</option>
+                      <option value="Gasal">Gasal</option>
+                      <option value="Genap">Genap</option>
                     </select>
                     </div>
                     <div class="form-group col-md-3">
                       <label>Status</label>
                       <!-- <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status"> -->
                       <select class="form-control" name="status" value="{{ Request::get('status')}}">
-                      <option value="0">Selesai</option>
-                      <option value="1">Belum Selesai</option>
+                      <option value="Selesai">Selesai</option>
+                      <option value="Belum Selesai">Belum Selesai</option>
                     </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -105,20 +110,10 @@
                         <td>{{$value->nim}}</td>
                         <td>{{$value->lokasi}}</td>
                         <td>{{$value->tahun}}</td>
-                        <td>
-                          @if($value->semester == 0)
-                            Gasal
-                          @else
-                            Genap
-                          @endif
+                        <td>{{$value->semester}}
                         </td>
                         <td>{{$value->dosen}}</td>
-                        <td>
-                          @if($value->status == 0)
-                            Selesai
-                          @else
-                            Belum Selesai
-                          @endif                          
+                        <td>{{$value->status}}                        
                         </td>
                         <td>
                           <a href="{{url('admin/kkn/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>

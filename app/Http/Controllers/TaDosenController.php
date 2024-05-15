@@ -16,6 +16,25 @@ class TaDosenController extends Controller
         return view('dosen.ta.list', $data);
     }
 
+    public function exportToCSV()
+    {
+        $test = Auth::user()->name;
+        $data = TaModel::tadosen($test);  
+
+        $fileName = 'data.csv';
+        $filePath = ('upload/' . $fileName);
+
+        $file = fopen($filePath, 'w');
+
+        fputcsv($file, array('id', 'Name', 'NIM', 'Judul','Status','Pembimbing 1','Pembimbing 2','Pengujian 1','Pengujian 2')); 
+
+        foreach ($data as $row) {
+            fputcsv($file, array($row->id, $row->name, $row->nim,$row->judul, $row->status, $row->pem1,$row->pem2,$row->peng1,$row->peng2)); 
+        }
+        fclose($file);
+
+        return response()->download($filePath)->deleteFileAfterSend(true);
+    }
     public function create(){
         $data['header_title'] = "Tambah Data TA";
         $data['getRecord'] = User::getDosen(); 

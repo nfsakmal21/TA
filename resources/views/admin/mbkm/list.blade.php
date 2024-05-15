@@ -11,6 +11,11 @@
             <h1>Data Merdeka Belajar Kampus Merdeka (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+          <form id="form-hadir" action="{{ url('admin/mbkm/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form>  
             <a href="{{url('admin/mbkm/create')}}" class="btn btn-primary">Tambah Data</a>        
           </div>
         </div>

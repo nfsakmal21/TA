@@ -11,6 +11,11 @@
             <h1>Daftar Dosen (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
+          <form id="form-hadir" action="{{ url('admin/dosen/csv/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary">Cetak CSV</button>
+        </form>  
             <a href="{{url('admin/dosen/create')}}" class="btn btn-primary">Tambah Dosen</a>        
           </div>
         </div>
@@ -51,6 +56,7 @@
                       <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status">
                     </div>
                     <div class="form-group col-md-3">
+                      
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                       <a href="{{url('admin/dosen/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
                     </div>

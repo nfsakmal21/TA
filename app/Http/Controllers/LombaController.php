@@ -15,6 +15,24 @@ class LombaController extends Controller
         return view('admin.prestasi.list', $data);
     }
 
+    public function exportToCSV()
+    {
+        $data = LombaModel::getRecord(); 
+
+        $fileName = 'data.csv';
+        $filePath = ('upload/' . $fileName);
+
+        $file = fopen($filePath, 'w');
+
+        fputcsv($file, array('id', 'Name', 'NIM', 'Nama Lomba','Penyelenggara Lomba','Tingkatan Lomba','Capaian Prestasi','Tahun Lomba','Dosen')); 
+
+        foreach ($data as $row) {
+            fputcsv($file, array($row->id, $row->name, $row->nim,$row->nama_lomba, $row->penyelenggara, $row->tingkat,$row->capaian,$row->tahun,$row->dosen)); 
+        }
+        fclose($file);
+
+        return response()->download($filePath)->deleteFileAfterSend(true);
+    }
     public function create(){
         $data['header_title'] = "Tambah Data Prestasi";
         return view('admin.prestasi.create', $data);

@@ -56,20 +56,10 @@
                         <td>{{$value->nim}}</td>
                         <td>{{$value->lokasi}}</td>
                         <td>{{$value->tahun}}</td>
-                        <td>
-                          @if($value->semester == 0)
-                            Gasal
-                          @else
-                            Genap
-                          @endif
+                        <td>{{$value->semester}}
                         </td>
                         <td>{{$value->perwalian_name}}</td>
-                        <td>
-                          @if($value->status == 0)
-                            Selesai
-                          @else
-                            Belum Selesai
-                          @endif                          
+                        <td>{{$value->status}}             
                         </td>
                         <td>
                           <a href="{{ asset('upload/sertifikat_kp/' . $value->sertifikat) }}" target="_blank">Buka Sertifikat</a>
