@@ -68,7 +68,7 @@ class PerwalianController extends Controller
     public function word(Request $request){
         $test = Auth::user()->id ;
         $data = User::perwalian($test); 
-        $phpword = new \PhpOffice\PhpWord\TemplateProcessor('C:\xampp\htdocs\tugas-akhir\storage\app\public\BAP_perwalian.docx');
+        $phpword = new \PhpOffice\PhpWord\TemplateProcessor('C:\Tugas Akhir\TA\upload\BAP_perwalian.docx');
         $tglskrg = Carbon::now()->timezone('Asia/Jakarta');
         $tahun = $tglskrg->format('Y');
         $bulan = $tglskrg->format('m');
