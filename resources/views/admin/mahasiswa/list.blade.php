@@ -9,6 +9,11 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Daftar Mahasiswa (Total : {{$getRecord->total()}})</h1>
+            <p>Mahasiswa Aktif : {{$TotalMahasiswaaktif}},
+            Mahasiswa Lulus : {{$TotalMahasiswalulus}},
+            Mahasiswa Drop Out : {{$TotalMahasiswado}},
+            </p><p>Mahasiswa Undur Diri : {{$TotalMahasiswaud}},
+            Mahasiswa Meninggal : {{$TotalMahasiswaalm}}</p>
           </div>
           <div class="col-sm-6" style="text-align: right;">
             <a href="{{url('admin/mahasiswa/create')}}" class="btn btn-primary">Tambah Mahasiswa</a>        
@@ -39,12 +44,20 @@
                       <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
                     </div>
                     <div class="form-group col-md-3">
-                      <label>Email</label>
-                      <input type="text" class="form-control" value="{{ Request::get('email')}}" name="email" placeholder="Masukan Email">
+                      <label>Username</label>
+                      <input type="text" class="form-control" value="{{ Request::get('username')}}" name="username" placeholder="Masukan Username">
                     </div>
                     <div class="form-group col-md-3">
                       <label>NIM</label>
                       <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="nim" placeholder="Masukan NIM">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Perwalian</label>
+                      <input type="text" class="form-control" value="{{ Request::get('perwal')}}" name="perwal" placeholder="Masukan Perwalian">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Status</label>
+                      <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
@@ -70,9 +83,10 @@
                     <tr>
                       <th>#</th>
                       <th>Name</th>  
-                      <th>Email</th>
+                      <th>Username</th>
                       <th>NIM</th>
-                      <th>perwalian</th>
+                      <th>Perwalian</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -81,12 +95,13 @@
                       <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
-                        <td>{{$value->email}}</td>
+                        <td>{{$value->username}}</td>
                         <td>{{$value->nim}}</td>
                         <td>{{$value->perwalian_name}}</td>
+                        <td>{{$value->status}}</td>
                         <td>
                           <a href="{{url('admin/mahasiswa/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('admin/mahasiswa/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <!-- <a href="{{url('admin/mahasiswa/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
                         </td>
                       </tr>
                     @endforeach

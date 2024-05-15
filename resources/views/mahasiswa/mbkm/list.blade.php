@@ -25,41 +25,7 @@
           <!-- /.col -->
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Cari Data</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form method="get" action="">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="form-group col-md-3">
-                      <label>Nama</label>
-                      <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label>NIM</label>
-                      <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="nim" placeholder="Masukan NIM">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label>Program</label>
-                      <input type="text" class="form-control" value="{{ Request::get('program')}}" name="program" placeholder="Masukan Nama Program">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label>Tahun</label>
-                      <input type="text" class="form-control" value="{{ Request::get('tahun')}}" name="tahun" placeholder="Masukan Tahun">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
-                      <a href="{{url('mahasiswa/mbkm/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-
-              </form>
-            </div>
+            
 
 
             @include('_message')
@@ -75,6 +41,7 @@
                       <th>NIM</th>
                       <th>Program</th>
                       <th>Tahun</th>
+                      <th>Dosen</th>
                       <th>Sertifikat</th>
                     </tr>
                   </thead>
@@ -84,37 +51,17 @@
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
                         <td>{{$value->nim}}</td>
-                        <td>
-                          @if($value->program == 0)
-                            Kampus Merdeka
-                          @elseif($value->program == 1)
-                            Magang Merdeka
-                          @elseif($value->program == 2)
-                            Studi Independen
-                          @elseif($value->program == 3)
-                            Pertukaran Mahasiswa Merdeka
-                          @elseif($value->program == 4)
-                            Wirausaha Merdeka
-                          @elseif($value->program == 5)
-                            Indonesian International Student Mobility Awards (IISMA)
-                          @elseif($value->program == 6)
-                            Praktisi Mengajar
-                          @elseif($value->program == 7)
-                            Bangkit By Google, GoTo, and Traveloka
-                          @else
-                            Kementrian ESDM - GERILYA
-                          @endif
-                        </td>
+                        <td>{{$value->program}}</td>
                         <td>{{$value->tahun}}</td>
+                        <td>{{$value->dosen}}</td>
                         <td>
-                          @if(!empty($value->getSertifikat()))
-                            <img src="{{ url('public/checkbox.png') }}" style="height:50px; width:50px; border-radius: 50px;">
-                          @endif
+                          <a href="{{ asset('upload/sertifikat_mbkm/' . $value->sertifikat) }}" target="_blank">Buka Sertifikat</a>
                         </td>
 
                         <td>
                           <a href="{{url('mahasiswa/mbkm/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('mahasiswa/mbkm/download/'.$value->id)}}" class="btn btn-success" onclick="return confirm('Apakah anda yakin ingin mengunduh data ini?')">Download Sertifikat</a>
+                          <!-- <a href="{{url('mahasiswa/mbkm/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
+                          <!-- <a href="{{url('mahasiswa/mbkm/download/'.$value->id)}}" class="btn btn-success" onclick="return confirm('Apakah anda yakin ingin mengunduh data ini?')">Download Sertifikat</a> -->
                         </td>
                       </tr>
                     @endforeach

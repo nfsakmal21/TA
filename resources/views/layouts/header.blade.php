@@ -5,6 +5,29 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      <li class="nav-item">
+      </li>
+      <div class="info-box" style="margin-right: 30px;" width="50%" >
+        <span class="info-box-icon bg-info"><i class="fas fa-phone-square"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">KONTAK:</span>
+          <span class="info-box-number">07218030188</span>
+        </div>
+      </div>
+      <div class="info-box" style="margin-right: 30px;">
+        <span class="info-box-icon bg-info"><i class="fas fa-envelope"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">EMAIL:</span>
+          <span class="info-box-number">informatika@itera.ac.id</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <span class="info-box-icon bg-info"><i class="fas fa-map-marker"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">LOKASI:</span>
+          <span class="info-box-number">Ruang D215 - Gedung D Kampus ITERA</span>
+        </div>
+      </div>
     </ul>
 
   </nav>
@@ -14,8 +37,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{ url('public/logoif.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <p style="font-size:14px">Sistem Informasi <br> Aktivitas Mahasiswa</p>
+      <img src="{{ url('logoif.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <p style="font-size:14px">Sistem Monitoring <br> Aktivitas Mahasiswa</p>
     </a>
 
     <!-- Sidebar -->
@@ -24,7 +47,7 @@
       @if(Auth::user()->user_type == 1)
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ url('public/man.png') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ url('man.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()-> name }}</a>
@@ -34,7 +57,7 @@
       @elseif(Auth::user()->user_type == 2)
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ url('public/dosen.png') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ url('dosen.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()-> name }}</a>
@@ -44,7 +67,7 @@
       @elseif(Auth::user()->user_type == 3)
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ url('public/boy.png') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ url('boy.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()-> name }}</a>
@@ -89,14 +112,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{url('admin/perwalian/list')}}" class="nav-link @if(Request::segment(2) == 'perwalian') active @endif">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Perwalian
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="{{url('admin/kkn/list')}}" class="nav-link @if(Request::segment(2) == 'kkn') active @endif">
               <i class="nav-icon fas fa-globe"></i>
@@ -159,6 +182,22 @@
               <i class="nav-icon far fa-user"></i>
               <p>
                 Perwalian
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('dosen/mahasiswa/list')}}" class="nav-link @if(Request::segment(2) == 'mahasiswa') active @endif">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Mahasiswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('dosen/pesan/list')}}" class="nav-link @if(Request::segment(2) == 'pesan') active @endif">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Pesan
               </p>
             </a>
           </li>

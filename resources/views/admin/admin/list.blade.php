@@ -39,8 +39,8 @@
                       <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
                     </div>
                     <div class="form-group col-md-3">
-                      <label>Email</label>
-                      <input type="text" class="form-control" value="{{ Request::get('email')}}" name="email" placeholder="Masukan Email">
+                      <label>Username</label>
+                      <input type="text" class="form-control" value="{{ Request::get('username')}}" name="username" placeholder="Masukan Username">
                     </div>
                     <div class="form-group col-md-3">
                       <label>NIP</label>
@@ -68,7 +68,7 @@
                     <tr>
                       <th>#</th>
                       <th>Nama</th>
-                      <th>Email</th>
+                      <th>Username</th>
                       <th>NIP</th>
                       <th>Aksi</th>
                     </tr>
@@ -78,11 +78,11 @@
                       <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
-                        <td>{{$value->email}}</td>
+                        <td>{{$value->username}}</td>
                         <td>{{$value->nip}}</td>
                         <td>
                           <a href="{{url('admin/admin/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('admin/admin/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <!-- <a href="{{url('admin/admin/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
                         </td>
                       </tr>
                     @endforeach

@@ -11,7 +11,7 @@ use Str;
 class DosenController extends Controller
 {
     public function list(){
-        $data['getRecord'] = User::getDosen(); 
+        $data['getRecord'] = User::getDosens(); 
         $data['header_title'] = "Daftar Dosen";
         return view('admin.dosen.list', $data);
     }
@@ -23,15 +23,16 @@ class DosenController extends Controller
 
     public function tambah(Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             'nip' => 'required|unique:users'
         ]);
         
         $dosen = new User;
         $dosen->name = trim($request->name);
         $dosen->nip = trim($request->nip);
-        $dosen->email = trim($request->email);
-        $dosen->password = Hash::make($request->password);
+        $dosen->username = strtok($dosen->name, ' ');
+        $dosen->password = Hash::make(strtok($dosen->name, ' '));
+        $dosen->status = "Aktif";
         $dosen->user_type = 2;
         $dosen->save();
 
@@ -51,19 +52,16 @@ class DosenController extends Controller
 
     public function update($id, Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users,email,'.$id,
+            // 'email' => 'required|email|unique:users,email,'.$id,
             'nip' => 'required|unique:users,nip,'.$id
         ]);
 
         $dosen = User::getSingle($id);
         $dosen->name = trim($request->name);
         $dosen->nip = trim($request->nip);
-        $dosen->email = trim($request->email);
-        if(!empty($request->password)){
-
-            $dosen->password = Hash::make($request->password);
-        }
-
+        $dosen->username = strtok($dosen->name, ' ');
+        $dosen->password = Hash::make(strtok($dosen->name, ' '));
+        $dosen->status = trim($request->status);
         $dosen->save();
 
         return redirect('admin/dosen/list')->with('sukses', "Dosen berhasil diupdate");

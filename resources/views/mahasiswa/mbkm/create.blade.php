@@ -37,21 +37,15 @@
                   </div>
                   <div class="form-group">
                     <label>Program</label>
-                    <select class="form-control" name="program" value="{{old('program')}}">
-                      <option value="0">Kampus Merdeka</option>
-                      <option value="1">Magang Merdeka</option>
-                      <option value="2">Studi Independen</option>
-                      <option value="3">Pertukaran Mahasiswa Merdeka</option>
-                      <option value="4">Wirausaha Merdeka</option>
-                      <option value="5">Indonesian International Student Mobility Awards (IISMA)</option>
-                      <option value="6">Praktisi Mengajar</option>
-                      <option value="7">Bangkit By Google, GoTo, and Traveloka</option>
-                      <option value="8">Kementrian ESDM - GERILYA</option>
-                    </select>
+                    <input type="text" class="form-control" name="program" value="{{old('program')}}" required placeholder="Masukan Program">
                   </div>
                   <div class="form-group">
                     <label>Tahun</label>
                     <input type="text" class="form-control" name="tahun" value="{{old('tahun')}}" required placeholder="Masukan Tahun">
+                  </div>
+                  <div class="form-group">
+                    <label>Dosen</label>
+                    <input type="text" class="form-control" name="dosen" value="{{old('dosen')}}" required placeholder="Masukan Nama Dosen">
                   </div>
                   <div class="form-group">
                     <label>Sertifikat</label>

@@ -31,6 +31,7 @@ class KknController extends Controller
         $kkn->tahun = $request->tahun;
         $kkn->semester = $request->semester;
         $kkn->status = $request->status;
+        $kkn->dosen = $request->dosen;
         $kkn->save();
 
         return redirect('admin/kkn/list')->with('sukses', "Data KKN berhasil ditambah");
@@ -59,6 +60,7 @@ class KknController extends Controller
         $kkn->tahun = $request->tahun;
         $kkn->semester = $request->semester;
         $kkn->status = $request->status;
+        $kkn->dosen = $request->dosen;
         $kkn->save();
 
         return redirect('admin/kkn/list')->with('sukses', "Data KKN berhasil diupdate");

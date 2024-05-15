@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PerwalianController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\MahasiswadosenController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KknController;
 use App\Http\Controllers\KknDosenController;
@@ -63,10 +65,10 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/mahasiswa/edit/{id}', [MahasiswaController::class, 'update']);
     Route::get('admin/mahasiswa/delete/{id}', [MahasiswaController::class, 'delete']);
 
-    Route::get('admin/perwalian/list', [PerwalianController::class, 'listadmin']);
-    Route::post('admin/perwalian/seluruh', [PerwalianController::class, 'seluruh']);
-    Route::post('admin/perwalian/updatetidakhadir/{id}', [PerwalianController::class, 'adminupdatetidakhadir']);
-    Route::post('admin/perwalian/updatehadir/{id}', [PerwalianController::class, 'adminupdatehadir']);
+    // Route::get('admin/perwalian/list', [PerwalianController::class, 'listadmin']);
+    // Route::post('admin/perwalian/seluruh', [PerwalianController::class, 'seluruh']);
+    // Route::post('admin/perwalian/updatetidakhadir/{id}', [PerwalianController::class, 'adminupdatetidakhadir']);
+    // Route::post('admin/perwalian/updatehadir/{id}', [PerwalianController::class, 'adminupdatehadir']);
 
     Route::get('admin/dosen/list', [DosenController::class, 'list']);
     Route::get('admin/dosen/create', [DosenController::class, 'create']);
@@ -89,6 +91,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/kp/edit/{id}', [KpController::class, 'update']);
     Route::get('admin/kp/delete/{id}', [KpController::class, 'delete']);
     Route::get('admin/kp/download/{id}', [KpController::class, 'download']);
+    
 
     Route::get('admin/ta/list', [TaController::class, 'list']);
     Route::get('admin/ta/create', [TaController::class, 'create']);
@@ -142,9 +145,24 @@ Route::group(['middleware' => 'dosen'], function(){
     Route::get('dosen/kp/delete/{id}', [KpDosenController::class, 'delete']);
     Route::get('dosen/kp/download/{id}', [KpDosenController::class, 'download']);
 
+    Route::get('dosen/mahasiswa/list', [MahasiswadosenController::class, 'list']);
+    Route::get('dosen/mahasiswa/create', [MahasiswadosenController::class, 'create']);
+    Route::post('dosen/mahasiswa/create', [MahasiswadosenController::class, 'tambah']);
+    Route::get('dosen/mahasiswa/edit/{id}', [MahasiswadosenController::class, 'edit']);
+    Route::post('dosen/mahasiswa/edit/{id}', [MahasiswadosenController::class, 'update']);
+    Route::get('dosen/mahasiswa/delete/{id}', [MahasiswadosenController::class, 'delete']);
+
+    Route::get('dosen/pesan/list', [PesanController::class, 'list']);
+    Route::get('dosen/pesan/create', [PesanController::class, 'create']);
+    Route::post('dosen/pesan/create', [PesanController::class, 'tambah']);
+    Route::get('dosen/pesan/edit/{id}', [PesanController::class, 'edit']);
+    Route::post('dosen/pesan/edit/{id}', [PesanController::class, 'update']);
+    Route::get('dosen/pesan/delete/{id}', [PesanController::class, 'delete']);
+
     Route::get('dosen/perwalian/list', [PerwalianController::class, 'list']);
     Route::get('dosen/perwalian/word', [PerwalianController::class, 'formword']);
     Route::post('dosen/perwalian/word', [PerwalianController::class, 'word']);
+    Route::post('dosen/perwalian/seluruh', [PerwalianController::class, 'seluruh']);
     Route::post('dosen/perwalian/updatetidakhadir/{id}', [PerwalianController::class, 'updatetidakhadir']);
     Route::post('dosen/perwalian/updatehadir/{id}', [PerwalianController::class, 'updatehadir']);
 

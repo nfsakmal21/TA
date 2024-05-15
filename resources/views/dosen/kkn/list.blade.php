@@ -48,11 +48,23 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label>Semester Pelaksanaan</label>
-                      <input type="text" class="form-control" value="{{ Request::get('semester')}}" name="semester" placeholder="Masukan Semester">
+                      <!-- <input type="text" class="form-control" value="{{ Request::get('semester')}}" name="semester" placeholder="Masukan Semester"> -->
+                      <select class="form-control" name="semester" value="{{ Request::get('semester')}}">
+                      <option value="0">Gasal</option>
+                      <option value="1">Genap</option>
+                    </select>
                     </div>
                     <div class="form-group col-md-3">
                       <label>Status</label>
-                      <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status">
+                      <!-- <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status"> -->
+                      <select class="form-control" name="status" value="{{ Request::get('status')}}">
+                      <option value="0">Selesai</option>
+                      <option value="1">Belum Selesai</option>
+                    </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Nama Dosen</label>
+                      <input type="text" class="form-control" value="{{ Request::get('dosen')}}" name="dosen" placeholder="Masukan Nama Dosen">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
@@ -80,7 +92,9 @@
                       <th>Lokasi</th>
                       <th>Tahun Pelaksanaan</th>
                       <th>Semester Pelaksanaan</th>
+                      <th>Dosen</th>
                       <th>Status</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,6 +112,7 @@
                             Genap
                           @endif
                         </td>
+                        <td>{{$value->dosen}}</td>
                         <td>
                           @if($value->status == 0)
                             Selesai
@@ -107,7 +122,7 @@
                         </td>
                         <td>
                           <a href="{{url('dosen/kkn/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('dosen/kkn/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <!-- <a href="{{url('dosen/kkn/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
                         </td>
                       </tr>
                     @endforeach

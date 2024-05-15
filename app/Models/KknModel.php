@@ -29,6 +29,9 @@ class KknModel extends Model
                     if(!empty(Request::get('status'))){
                         $return = $return->where('status', 'like', '%'.Request::get('status').'%');
                     }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
         $return = $return->orderBy('kkn.id', 'desc') -> paginate(7);
         return $return;
     }
@@ -50,6 +53,9 @@ class KknModel extends Model
                     if(!empty(Request::get('status'))){
                         $return = $return->where('status', 'like', '%'.Request::get('status').'%');
                     }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
         $return = $return->orderBy('kkn.id', 'desc') -> paginate(7);
         return $return;
     }
@@ -69,5 +75,33 @@ class KknModel extends Model
         return self::select('kkn.id')
                         ->count();
     }
+
+        static public function kkndosen($id)
+{
+    $return = KknModel::join('users', 'users.nim', '=', 'kkn.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'kkn' adalah ID pengguna
+                ->select('kkn.*')
+                ->where('users.user_type', '=', 3)
+                ->where('users.perwalian', '=', $id);
+if(!empty(Request::get('name'))){
+                        $return = $return->where('kkn.name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('kkn.nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('kkn.tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('semester'))){
+                        $return = $return->where('kkn.semester', 'like', '%'.Request::get('semester').'%');
+                    }
+                    if(!empty(Request::get('status'))){
+                        $return = $return->where('kkn.status', 'like', '%'.Request::get('status').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('kkn.dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
+        $return = $return->orderBy('kkn.id', 'desc') -> paginate(7);
+    return $return;
+}
 }
 

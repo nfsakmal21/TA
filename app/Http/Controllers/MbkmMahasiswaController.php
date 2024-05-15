@@ -22,12 +22,15 @@ class MbkmMahasiswaController extends Controller
     }
 
     public function tambah(Request $request){
-       
+       request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
         $mbkm = new MbkmModel;
         $mbkm->name = $request->name;
         $mbkm->nim = $request->nim;
         $mbkm->program = $request->program;
         $mbkm->tahun = $request->tahun;
+        $mbkm->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             $ext = $request->file('sertifikat') -> getClientOriginalExtension();
             $file = $request->file('sertifikat');
@@ -53,11 +56,15 @@ class MbkmMahasiswaController extends Controller
     }
 
     public function update($id, Request $request){
+        request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
         $mbkm = MbkmModel::getSingle($id);
         $mbkm->name = $request->name;
         $mbkm->nim = $request->nim;
         $mbkm->program = $request->program;
         $mbkm->tahun = $request->tahun;
+        $mbkm->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             if(!empty($mbkm->getSertifikat())){
                 unlink('upload/sertifikat_mbkm/'. $mbkm->sertifikat);

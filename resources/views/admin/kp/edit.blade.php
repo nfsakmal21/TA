@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Data KKN</h1>
+            <h1>Edit Data Kerja Praktik</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -36,8 +36,8 @@
                     <div style="color:red">{{ $errors->first('nim') }}</div>
                   </div>
                   <div class="form-group">
-                    <label>Lokasi</label>
-                    <input type="text" class="form-control" value="{{old('lokasi', $getRecord->lokasi)}}" name="lokasi" required placeholder="Masukan Lokasi">
+                    <label>Nama Perusahaan</label>
+                    <input type="text" class="form-control" value="{{old('lokasi', $getRecord->lokasi)}}" name="lokasi" required placeholder="Masukan Nama Perusahaan">
                   </div>
                   <div class="form-group">
                     <label>Tahun</label>
@@ -48,6 +48,14 @@
                     <select class="form-control" name="semester" value="{{old('semester', $getRecord->semester)}}">
                       <option value="0">Gasal</option>
                       <option value="1">Genap</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Perwalian</label>
+                    <select class="form-control" name="dosen" value="{{old('dosen')}}">
+                      @foreach($getRecords as $value)
+                        <option value="{{$value->id}}" {{ $getRecord->dosen == $value->id ? 'selected' : '' }}>{{$value->name}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group">

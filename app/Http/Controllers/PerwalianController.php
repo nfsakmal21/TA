@@ -41,9 +41,15 @@ class PerwalianController extends Controller
         return redirect('admin/perwalian/list')->with('sukses', "Perwalian berhasil diupdate");
     }
     public function seluruh(){
-        PerwalianModel::where('status', 1)->update(['status' => 0]);
+        $test = Auth::user()->id ;
+        User::join('perwalian', 'users.name', '=', 'perwalian.name') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'perwalian' adalah ID pengguna
+                ->select('perwalian.*')
+                ->where('users.user_type', '=', 3)
+                ->where('users.perwalian', '=', $test)
+                ->where('perwalian.status', '=', 1)
+                ->update(['perwalian.status' => 0]);
 
-        return redirect('admin/perwalian/list')->with('sukses', "Presensi berhasil Direset");
+        return redirect('dosen/perwalian/list')->with('sukses', "Presensi berhasil Direset");
     }
 
     public function updatehadir($id, Request $request){

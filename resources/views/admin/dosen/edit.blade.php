@@ -36,6 +36,14 @@
                     <div style="color:red">{{ $errors->first('nip') }}</div>
                   </div>
                   <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" name="status">
+                      <option value="Aktif" {{ $getRecord->status == "Aktif" ? 'selected' : '' }}>Aktif</option>
+                      <option value="Tugas Belajar" {{ $getRecord->status == "Tugas Belajar" ? 'selected' : '' }}>Tugas Belajar</option>
+                      <option value="Nonaktif" {{ $getRecord->status == "Nonaktif" ? 'selected' : '' }}>Nonaktif</option>
+                    </select>
+                  </div>
+                  <!-- <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" value="{{old('email', $getRecord->email)}}" name="email" required placeholder="Masukan Email">
                     <div style="color:red">{{ $errors->first('email') }}</div>
@@ -44,7 +52,7 @@
                     <label>Password</label>
                     <input type="password" class="form-control" name="password"  placeholder="Masukan Password">
                     <p>Jika anda ingin mengganti password tolong isi, jika tidak abaikan</p>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
 

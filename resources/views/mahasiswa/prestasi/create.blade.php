@@ -58,6 +58,10 @@
                     <label>Tahun Lomba</label>
                     <input type="text" class="form-control" name="tahun" value="{{old('tahun')}}" required placeholder="Masukan Tahun Lomba">
                   </div>
+                  <div class="form-group">
+                    <label>Dosen</label>
+                    <input type="text" class="form-control" name="dosen" value="{{old('dosen')}}" required placeholder="Masukan Nama Dosen">
+                  </div>
                   <div>
                   <div class="form-group">
                     <label>Sertifikat</label>

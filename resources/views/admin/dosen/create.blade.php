@@ -35,7 +35,7 @@
                     <input type="text" class="form-control" value="{{old('nip')}}" name="nip" required placeholder="Masukan NIP">
                     <div style="color:red">{{ $errors->first('nip') }}</div>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" value="{{old('email')}}" name="email" required placeholder="Masukan Email">
                     <div style="color:red">{{ $errors->first('email') }}</div>
@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password" class="form-control" name="password" required placeholder="Masukan Password">
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
 

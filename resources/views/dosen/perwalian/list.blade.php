@@ -16,6 +16,11 @@
             @method('POST')
             <button type="submit" class="btn btn-primary">Cetak BAP</button>
         </form>         -->
+        <form id="form-hadir" action="{{ url('dosen/perwalian/seluruh/') }}" method="POST" style="display: inline;">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-danger">Reset Presensi</button>
+        </form>  
         <a href="{{url('dosen/perwalian/word')}}" class="btn btn-primary">Cetak BAP</a>
           </div>
         </div>
@@ -44,6 +49,10 @@
                       <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
                     </div>
                     <div class="form-group col-md-3">
+                      <label>NIM</label>
+                      <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="nim" placeholder="Masukan NIM">
+                    </div>
+                    <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                       <a href="{{url('admin/perwalian/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
                     </div>
@@ -64,7 +73,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
+                      <th>Nama</th>
+                      <th>NIM</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -73,6 +83,7 @@
                       <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
+                        <td>{{$value->nim}}</td>
                         <td>
     @if($value->status == 0)
         <form id="form-tidak-hadir-{{$value->id}}" action="{{ url('dosen/perwalian/updatehadir/'.$value->id) }}" method="POST" style="display: inline;">

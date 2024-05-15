@@ -29,7 +29,7 @@ class AuthController extends Controller
     public function AuthLogin(Request $request){
         $remember = !empty($request->remember) ? true : false;
 
-         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)){
+         if(Auth::attempt(['username' => $request->username, 'password' => $request->password], $remember)){
             if(Auth::user()->user_type == 1){
                 return redirect('admin/dashboard');
             }
@@ -44,7 +44,7 @@ class AuthController extends Controller
          }
          else
          {
-            return redirect()->back()->with('error', "Tolong masukan email atau password yang benar");
+            return redirect()->back()->with('error', "Tolong masukan username atau password yang benar");
          }
     }
 

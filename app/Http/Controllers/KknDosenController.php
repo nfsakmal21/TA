@@ -9,7 +9,8 @@ use App\Models\KknModel;
 class KknDosenController extends Controller
 {
     public function list(){
-        $data['getRecord'] = KknModel::getRecord(); 
+        $test = Auth::user()->id ;
+        $data['getRecord'] = KknModel::kkndosen($test); 
         $data['header_title'] = "Data Kkn";
         return view('dosen.kkn.list', $data);
     }
@@ -31,6 +32,7 @@ class KknDosenController extends Controller
         $kkn->tahun = $request->tahun;
         $kkn->semester = $request->semester;
         $kkn->status = $request->status;
+        $kkn->dosen = $request->dosen;
         $kkn->save();
 
         return redirect('dosen/kkn/list')->with('sukses', "Data KKN berhasil ditambah");
@@ -59,6 +61,7 @@ class KknDosenController extends Controller
         $kkn->tahun = $request->tahun;
         $kkn->semester = $request->semester;
         $kkn->status = $request->status;
+        $kkn->dosen = $request->dosen;
         $kkn->save();
 
         return redirect('dosen/kkn/list')->with('sukses', "Data KKN berhasil diupdate");

@@ -26,6 +26,9 @@ class PkmModel extends Model
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
                     }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
         $return = $return->orderBy('pkm.id', 'desc') -> paginate(7);
         return $return;
     }
@@ -42,6 +45,9 @@ class PkmModel extends Model
                     }
                     if(!empty(Request::get('tahun'))){
                         $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('dosen', 'like', '%'.Request::get('dosen').'%');
                     }
         $return = $return->orderBy('pkm.id', 'desc') -> paginate(7);
         return $return;
@@ -71,4 +77,29 @@ class PkmModel extends Model
         return self::select('pkm.id')
                         ->count();
     }
+            static public function pkmdosen($id)
+{
+    $return = PkmModel::join('users', 'users.nim', '=', 'pkm.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'pkm' adalah ID pengguna
+                ->select('pkm.*')
+                ->where('users.user_type', '=', 3)
+                ->where('users.perwalian', '=', $id);
+                if(!empty(Request::get('name'))){
+                        $return = $return->where('pkm.name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('pkm.nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('program'))){
+                        $return = $return->where('pkm.program', 'like', '%'.Request::get('program').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('pkm.tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('pkm.dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
+        $return = $return->orderBy('pkm.id', 'desc') -> paginate(7);
+
+    return $return;
+}
 }

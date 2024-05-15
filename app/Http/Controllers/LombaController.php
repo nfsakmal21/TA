@@ -21,6 +21,9 @@ class LombaController extends Controller
     }
 
     public function tambah(Request $request){
+        request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
        
         $lomba = new LombaModel;
         $lomba->name = $request->name;
@@ -30,6 +33,7 @@ class LombaController extends Controller
         $lomba->tingkat = $request->tingkat;
         $lomba->capaian = $request->capaian;
         $lomba->tahun = $request->tahun;
+        $lomba->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             $ext = $request->file('sertifikat') -> getClientOriginalExtension();
             $file = $request->file('sertifikat');
@@ -55,6 +59,9 @@ class LombaController extends Controller
     }
 
     public function update($id, Request $request){
+        request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
         $lomba = LombaModel::getSingle($id);
         $lomba->name = $request->name;
         $lomba->nim = $request->nim;
@@ -63,6 +70,7 @@ class LombaController extends Controller
         $lomba->tingkat = $request->tingkat;
         $lomba->capaian = $request->capaian;
         $lomba->tahun = $request->tahun;
+        $lomba->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             if(!empty($lomba->getSertifikat())){
                 unlink('upload/sertifikat_prestasi/'. $lomba->sertifikat);

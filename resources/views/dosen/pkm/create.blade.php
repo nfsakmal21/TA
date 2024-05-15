@@ -37,19 +37,15 @@
                   </div>
                   <div class="form-group">
                     <label>Program</label>
-                    <select class="form-control" name="program" value="{{old('program')}}">
-                      <option value="0">PKM-R</option>
-                      <option value="1">PKM-K</option>
-                      <option value="2">PKM-PM</option>
-                      <option value="3">PKM-PI</option>
-                      <option value="4">PKM-KC</option>
-                      <option value="5">PKM-GFK</option>
-                      <option value="6">PKM-GT</option>
-                    </select>
+                    <input type="text" class="form-control" name="program" value="{{old('program')}}" required placeholder="Masukan Program">
                   </div>
                   <div class="form-group">
                     <label>Tahun</label>
                     <input type="text" class="form-control" name="tahun" value="{{old('tahun')}}" required placeholder="Masukan Tahun">
+                  </div>
+                  <div class="form-group">
+                    <label>Dosen</label>
+                    <input type="text" class="form-control" name="dosen" value="{{old('dosen')}}" required placeholder="Masukan Nama Dosen">
                   </div>
                   <div class="form-group">
                     <label>Sertifikat</label>

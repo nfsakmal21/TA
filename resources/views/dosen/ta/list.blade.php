@@ -48,7 +48,28 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label>Status</label>
-                      <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status">
+                      <!-- <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status"> -->
+                      <select class="form-control" name="status" value="{{ Request::get('status')}}">
+                      <option value="0">Seminar Proposal</option>
+                      <option value="1">Sidang Akhir</option>
+                      <option value="2">Selesai</option>
+                    </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Pembimbing 1</label>
+                      <input type="text" class="form-control" value="{{ Request::get('pem1')}}" name="pem1" placeholder="Masukan Pembimbing 1">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Pembimbing 2</label>
+                      <input type="text" class="form-control" value="{{ Request::get('pem2')}}" name="pem2" placeholder="Masukan Pembimbing 2">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Penguji 1</label>
+                      <input type="text" class="form-control" value="{{ Request::get('peng1')}}" name="peng1" placeholder="Masukan Penguji 1">
+                    </div>
+                      <div class="form-group col-md-3">
+                      <label>Penguji 2</label>
+                      <input type="text" class="form-control" value="{{ Request::get('peng2')}}" name="peng2" placeholder="Masukan Penguji 2">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
@@ -75,6 +96,11 @@
                       <th>NIM</th>
                       <th>Judul</th>
                       <th>Status</th>
+                      <th>Pembimbing 1</th>
+                      <th>Pembimbing 2</th>
+                      <th>Pengujian 1</th>
+                      <th>Pengujian 2</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -93,9 +119,13 @@
                             Selesai
                           @endif
                         </td>
+                        <td>{{$value->pem1}}</td>
+                        <td>{{$value->pem2}}</td>
+                        <td>{{$value->peng1}}</td>
+                        <td>{{$value->peng2}}</td>
                         <td>
                           <a href="{{url('dosen/ta/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('dosen/ta/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <!-- <a href="{{url('dosen/ta/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
                         </td>
                       </tr>
                     @endforeach

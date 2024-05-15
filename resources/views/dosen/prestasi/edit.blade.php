@@ -59,6 +59,10 @@
                     <input type="text" class="form-control" value="{{old('tahun', $getRecord->tahun)}}" name="tahun" required placeholder="Masukan Tahun Lomba">
                   </div>
                   <div class="form-group">
+                    <label>Dosen</label>
+                    <input type="text" class="form-control" value="{{old('dosen', $getRecord->dosen)}}" name="dosen" required placeholder="Masukan Nama Dosen">
+                  </div>
+                  <div class="form-group">
                     <label>Sertifikat</label>
                     <input type="file" class="form-control" name="sertifikat">
                     @if(!empty($getRecord->getSertifikat()))

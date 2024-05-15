@@ -22,12 +22,15 @@ class PkmMahasiswaController extends Controller
     }
 
     public function tambah(Request $request){
-       
+       request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
         $pkm = new PkmModel;
         $pkm->name = $request->name;
         $pkm->nim = $request->nim;
         $pkm->program = $request->program;
         $pkm->tahun = $request->tahun;
+        $pkm->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             $ext = $request->file('sertifikat') -> getClientOriginalExtension();
             $file = $request->file('sertifikat');
@@ -53,11 +56,15 @@ class PkmMahasiswaController extends Controller
     }
 
     public function update($id, Request $request){
+        request()->validate([
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+        ]);
         $pkm = PkmModel::getSingle($id);
         $pkm->name = $request->name;
         $pkm->nim = $request->nim;
         $pkm->program = $request->program;
         $pkm->tahun = $request->tahun;
+        $pkm->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             if(!empty($pkm->getSertifikat())){
                 unlink('upload/sertifikat_pkm/'. $pkm->sertifikat);

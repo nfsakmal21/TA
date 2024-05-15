@@ -15,6 +15,11 @@ class MahasiswaController extends Controller
 {
     public function list(){
         $data['getRecord'] = User::getJoinedDatas();
+        $data['TotalMahasiswaaktif'] = User::getTotalUseraktif(3);
+            $data['TotalMahasiswalulus'] = User::getTotalUserlulus(3);
+            $data['TotalMahasiswado'] = User::getTotalUserdo(3);
+            $data['TotalMahasiswaud'] = User::getTotalUserud(3);
+            $data['TotalMahasiswaalm'] = User::getTotalUseralm(3);
         $data['header_title'] = "Daftar Mahasiswa";
         return view('admin.mahasiswa.list', $data);
     }
@@ -27,21 +32,23 @@ class MahasiswaController extends Controller
 
     public function tambah(Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             'nim' => 'required|unique:users'
         ]);
         
         $mahasiswa = new User;
         $mahasiswa->name = trim($request->name);
         $mahasiswa->nim = trim($request->nim);
-        $mahasiswa->email = trim($request->email);
         $mahasiswa->perwalian = trim($request->perwalian);
-        $mahasiswa->password = Hash::make($request->password);
+        $mahasiswa->username = strtok($mahasiswa->name, ' ').".".$mahasiswa->nim;
+        $mahasiswa->password = Hash::make($mahasiswa->nim);
         $mahasiswa->user_type = 3;
+        $mahasiswa->status = "Aktif";
         $mahasiswa->save();
 
         $perwalian = new PerwalianModel;
         $perwalian->name = trim($request->name);
+        $perwalian->nim = trim($request->nim);
         $perwalian->status = 0;
         $perwalian->save();
 
@@ -63,20 +70,19 @@ class MahasiswaController extends Controller
 
     public function update($id, Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users,email,'.$id,
+            // 'email' => 'required|email|unique:users,email,'.$id,
             'nim' => 'required|unique:users,nim,'.$id
         ]);
 
         $mahasiswa = User::getSingle($id);
+        $perwalian = PerwalianModel::where('name','=',$mahasiswa->name)->update(['name' => trim($request->name)]);
+        $perwalian = PerwalianModel::where('name','=',$mahasiswa->name)->update(['nim' => trim($request->nim)]);
         $mahasiswa->name = trim($request->name);
         $mahasiswa->nim = trim($request->nim);
-        $mahasiswa->email = trim($request->email);
+        $mahasiswa->username = strtok($mahasiswa->name, ' ').".".$mahasiswa->nim;
+        $mahasiswa->password = Hash::make($mahasiswa->nim);
         $mahasiswa->perwalian = trim($request->perwalian);
-        if(!empty($request->password)){
-
-            $mahasiswa->password = Hash::make($request->password);
-        }
-
+        $mahasiswa->status = trim($request->status);
         $mahasiswa->save();
 
         return redirect('admin/mahasiswa/list')->with('sukses', "Mahasiswa berhasil diupdate");

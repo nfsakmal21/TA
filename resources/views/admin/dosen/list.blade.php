@@ -39,12 +39,16 @@
                       <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
                     </div>
                     <div class="form-group col-md-3">
-                      <label>Email</label>
-                      <input type="text" class="form-control" value="{{ Request::get('email')}}" name="email" placeholder="Masukan Email">
+                      <label>Username</label>
+                      <input type="text" class="form-control" value="{{ Request::get('username')}}" name="username" placeholder="Masukan Username">
                     </div>
                     <div class="form-group col-md-3">
                       <label>NIP</label>
                       <input type="text" class="form-control" value="{{ Request::get('nip')}}" name="nip" placeholder="Masukan NIP">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Status</label>
+                      <input type="text" class="form-control" value="{{ Request::get('status')}}" name="status" placeholder="Masukan Status">
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
@@ -68,8 +72,9 @@
                     <tr>
                       <th>#</th>
                       <th>Name</th>  
-                      <th>Email</th>
+                      <th>Username</th>
                       <th>NIP</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -78,11 +83,12 @@
                       <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
-                        <td>{{$value->email}}</td>
+                        <td>{{$value->username}}</td>
                         <td>{{$value->nip}}</td>
+                        <td>{{$value->status}}</td>
                         <td>
                           <a href="{{url('admin/dosen/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <a href="{{url('admin/dosen/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <!-- <a href="{{url('admin/dosen/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
                         </td>
                       </tr>
                     @endforeach

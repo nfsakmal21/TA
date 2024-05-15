@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\KpModel;
+use App\Models\User;
 use Str;
 
 class KpMahasiswaController extends Controller
@@ -18,12 +19,14 @@ class KpMahasiswaController extends Controller
 
     public function create(){
         $data['header_title'] = "Tambah Data KP";
+        $data['getRecord'] = User::getDosen(); 
         return view('mahasiswa.kp.create', $data);
     }
 
     public function tambah(Request $request){
         request()->validate([
-            'nim' => 'required|unique:kp'
+            'nim' => 'required|unique:kp',
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
         ]);
 
         $kp = new KpModel;
@@ -33,6 +36,7 @@ class KpMahasiswaController extends Controller
         $kp->tahun = $request->tahun;
         $kp->semester = $request->semester;
         $kp->status = $request->status;
+        $kp->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             $ext = $request->file('sertifikat') -> getClientOriginalExtension();
             $file = $request->file('sertifikat');
@@ -48,6 +52,7 @@ class KpMahasiswaController extends Controller
 
     public function edit($id){
         $data['getRecord'] = KpModel::getSingle ($id);
+        $data['getRecords'] = User::getDosen(); 
         if(!empty($data['getRecord'])){
             $data['header_title'] = "Edit Data KP";
             return view('mahasiswa.kp.edit', $data);
@@ -60,6 +65,7 @@ class KpMahasiswaController extends Controller
     public function update($id, Request $request){
         request()->validate([
             'nim' => 'required|unique:kp,nim,'.$id,
+            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
         ]);
 
         $kp = KpModel::getSingle($id);
@@ -69,6 +75,7 @@ class KpMahasiswaController extends Controller
         $kp->tahun = $request->tahun;
         $kp->semester = $request->semester;
         $kp->status = $request->status;
+        $kp->dosen = $request->dosen;
         if(!empty($request->file('sertifikat'))){
             $ext = $request->file('sertifikat') -> getClientOriginalExtension();
             $file = $request->file('sertifikat');

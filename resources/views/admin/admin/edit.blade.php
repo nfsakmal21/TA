@@ -35,7 +35,7 @@
                     <input type="text" class="form-control" value="{{old('nip', $getRecord->nip)}}" name="nip" required placeholder="Masukan NIP">
                   </div>
                   <div style="color:red">{{ $errors->first('nip') }}</div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" value="{{old('email', $getRecord->email)}}" name="email" required placeholder="Masukan Email">
                     <div style="color:red">{{ $errors->first('email') }}</div>
@@ -44,7 +44,7 @@
                     <label>Password</label>
                     <input type="password" class="form-control" name="password"  placeholder="Masukan Password">
                     <p>Jika anda ingin mengganti password tolong isi, jika tidak abaikan</p>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
 

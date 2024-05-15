@@ -36,8 +36,8 @@
                     <div style="color:red">{{ $errors->first('nim') }}</div>
                   </div>
                   <div class="form-group">
-                    <label>Lokasi Perusahaan</label>
-                    <input type="text" class="form-control" name="lokasi" value="{{old('lokasi')}}" required placeholder="Masukan Lokasi">
+                    <label>Nama Perusahaan</label>
+                    <input type="text" class="form-control" name="lokasi" value="{{old('lokasi')}}" required placeholder="Masukan Nama Perusahaan">
                   </div>
                   <div class="form-group">
                     <label>Tahun</label>
@@ -51,6 +51,14 @@
                     </select>
                   </div>
                   <div class="form-group">
+                    <label>Dosen</label>
+                    <select class="form-control" name="dosen" value="{{old('dosen')}}">
+                      @foreach($getRecord as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status" value="{{old('status')}}">
                       <option value="0">Selesai</option>
@@ -60,6 +68,7 @@
                   <div class="form-group">
                     <label>Sertifikat</label>
                     <input type="file" class="form-control" name="sertifikat">
+                    <a>Dapat berupa Sertifikat/Bukti lainnya</a>
                   </div>
                 </div>
                 <!-- /.card-body -->

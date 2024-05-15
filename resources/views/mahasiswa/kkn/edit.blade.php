@@ -51,6 +51,10 @@
                     </select>
                   </div>
                   <div class="form-group">
+                    <label>Dosen</label>
+                    <input type="text" class="form-control" value="{{old('dosen', $getRecord->dosen)}}" name="dosen" required placeholder="Masukan Nama Dosen">
+                  </div>
+                  <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status" value="{{old('status', $getRecord->status)}}">
                       <option value="0">Selesai</option>

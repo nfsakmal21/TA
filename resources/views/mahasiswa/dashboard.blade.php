@@ -16,11 +16,25 @@
 
     <!-- Main content -->
 <div class="container">
-        <h2>Random Quote of the Day</h2>
-        <div class="quote-container">
-            <h1>{{$quots}}</h1>
-            <p>{{$penulis}}</p>
-        </div>
+        <h2>Pesan Dari Dosen Wali</h2>
+        <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Pesan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($getRecord as $value)
+                      <tr>
+                        <td>{{$value->id}}</td>
+                        <td>{{$value->pesan}}</td>
+                        
+
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
     </div>
           </div><!-- /.container-fluid -->
     </section>

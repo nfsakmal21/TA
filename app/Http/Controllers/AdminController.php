@@ -23,14 +23,13 @@ class AdminController extends Controller
 
     public function tambah(Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users',
             'nip' => 'required|unique:users'
         ]);
         $user = new User;
         $user->name = trim($request->name);
         $user->nip = trim($request->nip);
-        $user->email = trim($request->email);
-        $user->password = Hash::make($request->password);
+        $user->username = strtok($user->name, ' ');
+        $user->password = Hash::make(strtok($user->name, ' '));
         $user->user_type = 1;
         $user->save();
 
@@ -50,16 +49,14 @@ class AdminController extends Controller
 
     public function update($id, Request $request){
         request()->validate([
-            'email' => 'required|email|unique:users,email,'.$id,
+            // 'email' => 'required|email|unique:users,email,'.$id,
             'nip' => 'required|unique:users,nip,'.$id
         ]);
         $user = User::getSingle($id);
         $user->name = trim($request->name);
         $user->nip = trim($request->nip);
-        $user->email = trim($request->email);
-        if(!empty($request->password)){
-            $user->password = Hash::make($request->password);
-        }
+        $user->username = strtok($user->name, ' ');
+        $user->password = Hash::make(strtok($user->name, ' '));
         $user->save();
 
         return redirect('admin/admin/list')->with('sukses', "Admin berhasil diupdate");
