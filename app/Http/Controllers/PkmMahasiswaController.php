@@ -23,7 +23,7 @@ class PkmMahasiswaController extends Controller
 
     public function tambah(Request $request){
        request()->validate([
-            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+            'sertifikat' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
         $pkm = new PkmModel;
         $pkm->name = $request->name;

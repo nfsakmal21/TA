@@ -28,7 +28,7 @@ class MahasiswadosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = User::mhsdosen($test);
+        $data = User::getcsvmhsdosen($test);
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

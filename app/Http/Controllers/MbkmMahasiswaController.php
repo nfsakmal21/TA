@@ -23,7 +23,7 @@ class MbkmMahasiswaController extends Controller
 
     public function tambah(Request $request){
        request()->validate([
-            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+            'sertifikat' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
         $mbkm = new MbkmModel;
         $mbkm->name = $request->name;
@@ -78,7 +78,7 @@ class MbkmMahasiswaController extends Controller
         }
         $mbkm->save();
 
-        return redirect('mahasiswa/mbkm/list')->with('sukses', "Data MBKM berhasil ditambah");
+        return redirect('mahasiswa/mbkm/list')->with('sukses', "Data MBKM berhasil diupdate");
     }
 
     public function delete($id){

@@ -18,7 +18,7 @@ class PkmDosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = PkmModel::pkmdosen($test); 
+        $data = PkmModel::getcsvpkmdosen($test); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

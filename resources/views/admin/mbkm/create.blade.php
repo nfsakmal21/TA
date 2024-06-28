@@ -50,6 +50,7 @@
                   <div class="form-group">
                     <label>Sertifikat</label>
                     <input type="file" class="form-control" name="sertifikat" required>
+                    <a>Dapat berupa sertifikat/bukti lainnya berbentuk png dengan ukuran 2 mb</a>
                   </div>
                 <!-- /.card-body -->
 

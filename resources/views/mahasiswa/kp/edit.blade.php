@@ -51,7 +51,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Perwalian</label>
+                    <label>Dosen Pembimbing</label>
                     <select class="form-control" name="dosen" value="{{old('dosen')}}">
                       @foreach($getRecords as $value)
                         <option value="{{$value->id}}" {{ $getRecord->dosen == $value->id ? 'selected' : '' }}>{{$value->name}}</option>

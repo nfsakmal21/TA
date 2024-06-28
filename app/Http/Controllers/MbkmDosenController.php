@@ -19,7 +19,7 @@ class MbkmDosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = MbkmModel::mbkmdosen($test); 
+        $data = MbkmModel::getcsvmbkmdosen($test); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

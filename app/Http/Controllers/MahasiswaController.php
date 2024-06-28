@@ -26,7 +26,7 @@ class MahasiswaController extends Controller
 
     public function exportToCSV()
     {
-        $data = User::getJoinedDatas(); 
+        $data = User::getcsvmahasiswa(); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

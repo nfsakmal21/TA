@@ -19,7 +19,7 @@ class TaDosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->name;
-        $data = TaModel::tadosen($test);  
+        $data = TaModel::getcsvtadosen($test);  
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

@@ -66,6 +66,7 @@
                   <div class="form-group">
                     <label>Sertifikat</label>
                     <input type="file" class="form-control" required name="sertifikat">
+                    <a>Dapat berupa sertifikat atau bukti lainnya dalam format jpg/png</a>
                   </div>
                 </div>
                 <!-- /.card-body -->

@@ -26,6 +26,7 @@
           <div class="col-md-12">
             <!-- general form elements -->
             
+            
 
             @include('_message')
             <!-- /.card -->
@@ -43,7 +44,7 @@
                       <th>Tingkatan Lomba</th>
                       <th>Capaian Prestasi</th>
                       <th>Tahun Lomba</th>
-                      <th>Dosen</th>
+                      <th>Dosen Pembimbing</th>
                       <th>Sertifikat</th>
                       <th>Aksi</th>
                     </tr>
@@ -67,7 +68,7 @@
 
                         <td>
                           <a href="{{url('mahasiswa/prestasi/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                          <!-- <a href="{{url('mahasiswa/prestasi/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a> -->
+                          <a href="{{url('mahasiswa/prestasi/delete/'.$value->id)}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
                           <!-- <a href="{{url('mahasiswa/prestasi/download/'.$value->id)}}" class="btn btn-success" onclick="return confirm('Apakah anda yakin ingin mengunduh data ini?')">Download Sertifikat</a> -->
                         </td>
                       </tr>

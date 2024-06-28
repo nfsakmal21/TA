@@ -15,8 +15,8 @@
             @csrf
             @method('POST')
             <button type="submit" class="btn btn-primary">Cetak CSV</button>
-        </form>  
-            <a href="{{url('admin/kp/create')}}" class="btn btn-primary">Tambah Data</a>        
+        </form> 
+            <!--<a href="{{url('admin/kp/create')}}" class="btn btn-primary">Tambah Data</a>-->        
           </div>
         </div>
       </div><!-- /.container-fluid -->

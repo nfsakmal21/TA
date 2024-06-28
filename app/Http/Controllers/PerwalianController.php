@@ -42,7 +42,7 @@ class PerwalianController extends Controller
     }
     public function seluruh(){
         $test = Auth::user()->id ;
-        User::join('perwalian', 'users.name', '=', 'perwalian.name') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'perwalian' adalah ID pengguna
+        User::join('perwalian', 'users.name', '=', 'perwalian.name') 
                 ->select('perwalian.*')
                 ->where('users.user_type', '=', 3)
                 ->where('users.perwalian', '=', $test)
@@ -61,13 +61,13 @@ class PerwalianController extends Controller
     }
 
     public function formword(){
-        $data['header_title'] = "Tambah Data MBKM";
+        $data['header_title'] = "Form BAP Perwalian";
         return view('dosen.perwalian.create', $data);
     }
 
     public function word(Request $request){
         $test = Auth::user()->id ;
-        $data = User::perwalian($test); 
+        $data = User::bapperwalian($test); 
         $phpword = new \PhpOffice\PhpWord\TemplateProcessor('C:\Tugas Akhir\TA\upload\BAP_perwalian.docx');
         $tglskrg = Carbon::now()->timezone('Asia/Jakarta');
         $tahun = $tglskrg->format('Y');
@@ -138,18 +138,6 @@ class PerwalianController extends Controller
         ]);
 
         $phpword->saveAs('BAP_Perwalian.docx');
-    //    $phpWord = new PhpWord();
-
-    //     // Add content to the document
-    //     $section = $phpWord->addSection();
-    //     $section->addText('Hello, this is a sample document.');
-
-    //     // Save the document
-    //     $filename = 'sample_document.docx';
-    //     $path = storage_path('app/public/' . $filename); // Adjust path as needed
-
-    //     $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-    //     $objWriter->save($path);
         return response()->download('BAP_Perwalian.docx')->deleteFileAfterSend(true);
         return redirect('dosen/perwalian/list')->with('sukses', "Perwalian berhasil diupdate");
     }

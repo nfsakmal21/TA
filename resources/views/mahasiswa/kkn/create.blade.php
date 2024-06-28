@@ -51,7 +51,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Dosen</label>
+                    <label>Dosen Pembimbing</label>
                     <input type="text" class="form-control" name="dosen" value="{{old('dosen')}}" required placeholder="Masukan Nama Dosen">
                   </div>
                   <div class="form-group">

@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
-                      <a href="{{url('admin/perwalian/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
+                      <a href="{{url('dosen/perwalian/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
                     </div>
                   </div>
                 </div>

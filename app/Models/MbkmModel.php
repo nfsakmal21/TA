@@ -32,6 +32,28 @@ class MbkmModel extends Model
         $return = $return->orderBy('mbkm.id', 'desc') -> paginate(7);
         return $return;
     }
+
+    static public function getcsvmbkm(){
+        $return = MbkmModel::select('mbkm.*');
+                    if(!empty(Request::get('name'))){
+                        $return = $return->where('name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('program'))){
+                        $return = $return->where('program', 'like', '%'.Request::get('program').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
+        $return = $return->orderBy('mbkm.id', 'desc') -> get();
+        return $return;
+    }
+
     static public function getRecords($nim){
         $return = MbkmModel::select('mbkm.*')->where('nim',$nim);
                     if(!empty(Request::get('name'))){
@@ -77,6 +99,7 @@ class MbkmModel extends Model
         return self::select('mbkm.id')
                         ->count();
     }
+
     static public function mbkmdosen($id)
 {
     $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'mbkm' adalah ID pengguna
@@ -100,6 +123,33 @@ class MbkmModel extends Model
                         $return = $return->where('mbkm.dosen', 'like', '%'.Request::get('dosen').'%');
                     }
         $return = $return->orderBy('mbkm.id', 'desc') -> paginate(7);
+
+    return $return;
+}
+
+    static public function getcsvmbkmdosen($id)
+{
+    $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'mbkm' adalah ID pengguna
+                ->select('mbkm.*')
+                ->where('users.user_type', '=', 3)
+                ->where('users.perwalian', '=', $id);
+
+                if(!empty(Request::get('name'))){
+                        $return = $return->where('mbkm.name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('mbkm.nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('program'))){
+                        $return = $return->where('mbkm.program', 'like', '%'.Request::get('program').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('mbkm.tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('mbkm.dosen', 'like', '%'.Request::get('dosen').'%');
+                    }
+        $return = $return->orderBy('mbkm.id', 'desc') -> get();
 
     return $return;
 }

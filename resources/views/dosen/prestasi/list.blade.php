@@ -16,7 +16,7 @@
             @method('POST')
             <button type="submit" class="btn btn-primary">Cetak CSV</button>
         </form>
-            <a href="{{url('dosen/prestasi/create')}}" class="btn btn-primary">Tambah Data</a>        
+            <!--<a href="{{url('dosen/prestasi/create')}}" class="btn btn-primary">Tambah Data</a>-->        
           </div>
         </div>
       </div><!-- /.container-fluid -->

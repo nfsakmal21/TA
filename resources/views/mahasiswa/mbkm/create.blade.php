@@ -44,12 +44,13 @@
                     <input type="text" class="form-control" name="tahun" value="{{old('tahun')}}" required placeholder="Masukan Tahun">
                   </div>
                   <div class="form-group">
-                    <label>Dosen</label>
+                    <label>Dosen Pembimbing</label>
                     <input type="text" class="form-control" name="dosen" value="{{old('dosen')}}" required placeholder="Masukan Nama Dosen">
                   </div>
                   <div class="form-group">
                     <label>Sertifikat</label>
                     <input type="file" class="form-control" name="sertifikat" required>
+                    <a>Dapat berupa sertifikat atau bukti lainnya dalam format jpg/png</a>
                   </div>
                 <!-- /.card-body -->
 

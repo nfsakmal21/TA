@@ -13,7 +13,7 @@ class KpMahasiswaController extends Controller
     public function list(){
         $test = Auth::user()->nim;
         $data['getRecord'] = KpModel::getRecords($test); 
-        $data['header_title'] = "Data Kkn";
+        $data['header_title'] = "Data Kp";
         return view('mahasiswa.kp.list', $data);
     }
 
@@ -26,7 +26,7 @@ class KpMahasiswaController extends Controller
     public function tambah(Request $request){
         request()->validate([
             'nim' => 'required|unique:kp',
-            'sertifikat' => 'nullable|image|mimes:jpeg,png|max:2048',
+            'sertifikat' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
 
         $kp = new KpModel;

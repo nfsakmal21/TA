@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Pekan Kreativitas Mahasiswa (Total : {{$getRecord->total()}})</h1>
+            <h1>Data Program Kreativitas Mahasiswa (Total : {{$getRecord->total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
             <a href="{{url('mahasiswa/pkm/create')}}" class="btn btn-primary">Tambah Data</a>        
@@ -25,6 +25,45 @@
           <!-- /.col -->
           <div class="col-md-12">
             <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Cari Data</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="get" action="">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-md-3">
+                      <label>Nama</label>
+                      <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name" placeholder="Masukan Nama">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>NIM</label>
+                      <input type="text" class="form-control" value="{{ Request::get('nim')}}" name="nim" placeholder="Masukan NIM">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Program</label>
+                      <input type="text" class="form-control" value="{{ Request::get('program')}}" name="program" placeholder="Masukan Nama Program">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Tahun</label>
+                      <input type="text" class="form-control" value="{{ Request::get('tahun')}}" name="tahun" placeholder="Masukan Tahun">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label>Nama Dosen</label>
+                      <input type="text" class="form-control" value="{{ Request::get('dosen')}}" name="dosen" placeholder="Masukan Nama Dosen">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
+                      <a href="{{url('dosen/pkm/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+              </form>
+            </div>
             
 
 
@@ -41,7 +80,7 @@
                       <th>NIM</th>
                       <th>Program</th>
                       <th>Tahun</th>
-                      <th>Dosen</th>
+                      <th>Dosen Pembimbing</th>
                       <th>Sertifikat</th>
                     </tr>
                   </thead>

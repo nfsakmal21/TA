@@ -25,7 +25,7 @@
           <!-- /.col -->
           <div class="col-md-12">
             <!-- general form elements -->
-            
+
 
 
             @include('_message')

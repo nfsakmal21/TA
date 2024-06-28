@@ -15,8 +15,8 @@
             @csrf
             @method('POST')
             <button type="submit" class="btn btn-primary">Cetak CSV</button>
-        </form>  
-            <a href="{{url('dosen/ta/create')}}" class="btn btn-primary">Tambah Data</a>        
+        </form>
+            <!--<a href="{{url('dosen/ta/create')}}" class="btn btn-primary">Tambah Data</a>-->        
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -103,8 +103,8 @@
                       <th>Status</th>
                       <th>Pembimbing 1</th>
                       <th>Pembimbing 2</th>
-                      <th>Pengujian 1</th>
-                      <th>Pengujian 2</th>
+                      <th>Penguji 1</th>
+                      <th>Penguji 2</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>

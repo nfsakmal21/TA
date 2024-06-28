@@ -18,7 +18,7 @@ class KpController extends Controller
 
     public function exportToCSV()
     {
-        $data = KpModel::kpadmin();  
+        $data = KpModel::getcsvkpadmin();  
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

@@ -33,7 +33,8 @@ class KpModel extends Model
     }
 
     static public function getRecords($nim){
-        $return = KpModel::select('kp.*')->where('nim',$nim);
+        $return = KpModel::join('users', 'users.id', '=', 'kp.dosen')
+                    ->select('kp.*', 'users.name as perwalian_name')->where('kp.nim',$nim);
                     if(!empty(Request::get('name'))){
                         $return = $return->where('name', 'like', '%'.Request::get('name').'%');
                     }
@@ -87,8 +88,37 @@ class KpModel extends Model
                     if(!empty(Request::get('dosen'))){
                         $return = $return->where('users.name', 'like', '%'.Request::get('dosen').'%');
                     }
-                    $return = $return->orderBy('kp.id', 'desc') // Menggunakan 'perwalian.id' untuk mengurutkan hasil
+                    $return = $return->orderBy('kp.id', 'desc') 
                     ->paginate(10);
+                
+
+        return $return;
+    }
+
+    static public function getcsvkpadmin()
+    {
+        $return = KpModel::join('users', 'users.id', '=', 'kp.dosen')
+                    ->select('kp.*', 'users.name as perwalian_name');
+                    if(!empty(Request::get('name'))){
+                        $return = $return->where('kp.name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('kp.nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('kp.tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('semester'))){
+                        $return = $return->where('kp.semester', 'like', '%'.Request::get('semester').'%');
+                    }
+                    if(!empty(Request::get('status'))){
+                        $return = $return->where('kp.status', 'like', '%'.Request::get('status').'%');
+                    }
+                    if(!empty(Request::get('dosen'))){
+                        $return = $return->where('users.name', 'like', '%'.Request::get('dosen').'%');
+                    }
+                    $return = $return->orderBy('kp.id', 'desc') 
+                    ->get();
                 
 
         return $return;
@@ -129,6 +159,30 @@ class KpModel extends Model
                         $return = $return->where('kp.status', 'like', '%'.Request::get('status').'%');
                     }
         $return = $return->orderBy('kp.id', 'desc') -> paginate(7);
+    return $return;
+}
+
+            static public function getcsvkpdosen($id)
+{
+    $return = KpModel::join('users', 'users.id', '=', 'kp.dosen')
+                    ->select('kp.*', 'users.name as perwalian_name')
+                    ->where('kp.dosen' ,'=', $id);
+    if(!empty(Request::get('name'))){
+                        $return = $return->where('kp.name', 'like', '%'.Request::get('name').'%');
+                    }
+                    if(!empty(Request::get('nim'))){
+                        $return = $return->where('kp.nim', 'like', '%'.Request::get('nim').'%');
+                    }
+                    if(!empty(Request::get('tahun'))){
+                        $return = $return->where('kp.tahun', 'like', '%'.Request::get('tahun').'%');
+                    }
+                    if(!empty(Request::get('semester'))){
+                        $return = $return->where('kp.semester', 'like', '%'.Request::get('semester').'%');
+                    }
+                    if(!empty(Request::get('status'))){
+                        $return = $return->where('kp.status', 'like', '%'.Request::get('status').'%');
+                    }
+        $return = $return->orderBy('kp.id', 'desc') -> get();
     return $return;
 }
 }

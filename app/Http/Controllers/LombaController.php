@@ -17,7 +17,7 @@ class LombaController extends Controller
 
     public function exportToCSV()
     {
-        $data = LombaModel::getRecord(); 
+        $data = LombaModel::getcsvlomba(); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

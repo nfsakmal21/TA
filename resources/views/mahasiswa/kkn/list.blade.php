@@ -41,7 +41,7 @@
                       <th>Lokasi</th>
                       <th>Tahun Pelaksanaan</th>
                       <th>Semester Pelaksanaan</th>
-                      <th>Dosen</th>
+                      <th>Dosen Pembimbing</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </tr>

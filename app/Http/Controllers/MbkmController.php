@@ -17,7 +17,7 @@ class MbkmController extends Controller
 
     public function exportToCSV()
     {
-        $data = MbkmModel::getRecord(); 
+        $data = MbkmModel::getcsvmbkm(); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

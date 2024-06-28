@@ -27,7 +27,7 @@
         <img src="{{ url('profile.png') }}" width=100px; >
       </a>  
     </center>
-    <p class="login-box-msg">Sistem Monitoring Aktivitas Mahasiswa</p>
+    <p class="login-box-msg">Sistem Informasi Monitoring Aktivitas Mahasiswa</p>
 
       @include('_message')
 

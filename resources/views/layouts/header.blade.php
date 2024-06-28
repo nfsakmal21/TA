@@ -36,9 +36,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="http://if.itera.ac.id" class="brand-link">
       <img src="{{ url('logoif.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <p style="font-size:14px">Sistem Monitoring <br> Aktivitas Mahasiswa</p>
+      <p style="font-size:14px">Sistem Informasi Monitoring <br> Aktivitas Mahasiswa</p>
     </a>
 
     <!-- Sidebar -->

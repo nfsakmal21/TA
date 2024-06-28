@@ -13,14 +13,14 @@ class KpDosenController extends Controller
     public function list(){
         $test = Auth::user()->id ;
         $data['getRecord'] = KpModel::kpdosen($test); 
-        $data['header_title'] = "Data Kkn";
+        $data['header_title'] = "Data Kp";
         return view('dosen.kp.list', $data);
     }
 
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = KpModel::kpdosen($test);  
+        $data = KpModel::getcsvkpdosen($test);  
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

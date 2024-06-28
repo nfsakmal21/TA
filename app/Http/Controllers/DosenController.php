@@ -18,7 +18,7 @@ class DosenController extends Controller
 
     public function exportToCSV()
     {
-        $data = User::getDosens(); 
+        $data = User::getcsvDosens(); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

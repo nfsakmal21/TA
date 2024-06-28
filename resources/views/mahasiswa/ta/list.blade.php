@@ -42,8 +42,8 @@
                       <th>Status</th>
                       <th>Pembimbing 1</th>
                       <th>Pembimbing 2</th>
-                      <th>Pengujian 1</th>
-                      <th>Pengujian 2</th>
+                      <th>Penguji 1</th>
+                      <th>Penguji 2</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -54,8 +54,7 @@
                         <td>{{$value->name}}</td>
                         <td>{{$value->nim}}</td>
                         <td>{{$value->judul}}</td>
-                        <td>{{$value->status}}
-                        </td>
+                        <td>{{$value->status}}</td>
                         <td>{{$value->pem1}}</td>
                         <td>{{$value->pem2}}</td>
                         <td>{{$value->peng1}}</td>

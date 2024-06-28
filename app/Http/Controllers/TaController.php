@@ -16,7 +16,7 @@ class TaController extends Controller
     }
     public function exportToCSV()
     {
-        $data = TaModel::getRecord();  
+        $data = TaModel::getcsvta();  
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

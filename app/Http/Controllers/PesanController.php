@@ -14,7 +14,8 @@ use Str;
 class PesanController extends Controller
 {
     public function list(){
-        $data['getRecord'] = PesanModel::getRecord();
+        $test = Auth::user()->id;
+        $data['getRecord'] = PesanModel::getRecord($test);
         $data['header_title'] = "Daftar Pesan";
         return view('dosen.pesan.list', $data);
     }
@@ -25,11 +26,6 @@ class PesanController extends Controller
     }
 
     public function tambah(Request $request){
-        // request()->validate([
-        //     // 'email' => 'required|email|unique:users',
-        //     // 'nim' => 'required|unique:users'
-        // ]);
-        
         $pesan = new PesanModel;
         $test = Auth::user()->id ;
         $pesan->dosen_id = $test;
@@ -53,11 +49,6 @@ class PesanController extends Controller
     }
 
     public function update($id, Request $request){
-        // request()->validate([
-        //     // 'email' => 'required|email|unique:users,email,'.$id,
-        //     'nim' => 'required|unique:users,nim,'.$id
-        // ]);
-
         $pesan =  PesanModel::getSingle($id);
         $test = Auth::user()->id ;
         $pesan->dosen_id = $test;

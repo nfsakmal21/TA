@@ -16,7 +16,7 @@ class KknController extends Controller
 
     public function exportToCSV()
     {
-        $data = KknModel::getRecord();
+        $data = KknModel::getcsvkkn();
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

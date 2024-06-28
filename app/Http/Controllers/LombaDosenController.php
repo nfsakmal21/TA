@@ -19,7 +19,7 @@ class LombaDosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = LombaModel::lombadosen($test); 
+        $data = LombaModel::getcsvlombadosen($test); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

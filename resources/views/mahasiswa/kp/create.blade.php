@@ -51,7 +51,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Dosen</label>
+                    <label>Dosen Pembimbing</label>
                     <select class="form-control" name="dosen" value="{{old('dosen')}}">
                       @foreach($getRecord as $value)
                         <option value="{{$value->id}}">{{$value->name}}</option>
@@ -67,7 +67,8 @@
                   </div>
                   <div class="form-group">
                     <label>Sertifikat</label>
-                    <input type="file" class="form-control" name="sertifikat">
+                    <input type="file" class="form-control" name="sertifikat" required>
+                    <a>Dapat berupa sertifikat atau bukti lainnya dalam format jpg/png</a>
                   </div>
                 </div>
                 <!-- /.card-body -->

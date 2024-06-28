@@ -17,7 +17,7 @@ class PkmController extends Controller
 
     public function exportToCSV()
     {
-        $data = PkmModel::getRecord(); 
+        $data = PkmModel::getcsvpkm(); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

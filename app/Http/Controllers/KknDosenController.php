@@ -18,7 +18,7 @@ class KknDosenController extends Controller
     public function exportToCSV()
     {
         $test = Auth::user()->id ;
-        $data = KknModel::kkndosen($test); 
+        $data = KknModel::getcsvkkndosen($test); 
 
         $fileName = 'data.csv';
         $filePath = ('upload/' . $fileName);

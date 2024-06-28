@@ -24,10 +24,7 @@
 
           <!-- /.col -->
           <div class="col-md-12">
-            <!-- general form elements -->
-            
-
-
+            <!-- general form elements -->     
             @include('_message')
             <!-- /.card -->
             <div class="card">
@@ -41,7 +38,7 @@
                       <th>NIM</th>
                       <th>Program</th>
                       <th>Tahun</th>
-                      <th>Dosen</th>
+                      <th>Dosen Pembimbing</th>
                       <th>Sertifikat</th>
                     </tr>
                   </thead>
