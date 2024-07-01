@@ -26,10 +26,8 @@ jobs:
 
       - name: Install Composer Dependencies
         run: composer install --ignore-platform-reqs --no-interaction --no-progress --no-suggest --optimize-autoloader
-
       - name: Generate Laravel Key
         run: php artisan key:generate
-
       - name: Generate Storage Link
         run: php artisan storage:link
 
