@@ -35,7 +35,6 @@ class KknModel extends Model
         $return = $return->orderBy('kkn.id', 'desc') -> paginate(7);
         return $return;
     }
-
     static public function getcsvkkn(){
         $return = KknModel::select('kkn.*');
                     if(!empty(Request::get('name'))){
