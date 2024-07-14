@@ -102,7 +102,7 @@ class MbkmModel extends Model
 
     static public function mbkmdosen($id)
 {
-    $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'mbkm' adalah ID pengguna
+    $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') 
                 ->select('mbkm.*')
                 ->where('users.user_type', '=', 3)
                 ->where('users.perwalian', '=', $id);
@@ -129,7 +129,7 @@ class MbkmModel extends Model
 
     static public function getcsvmbkmdosen($id)
 {
-    $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'mbkm' adalah ID pengguna
+    $return = MbkmModel::join('users', 'users.nim', '=', 'mbkm.nim') 
                 ->select('mbkm.*')
                 ->where('users.user_type', '=', 3)
                 ->where('users.perwalian', '=', $id);

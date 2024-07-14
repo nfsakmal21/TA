@@ -129,7 +129,7 @@ class LombaModel extends Model
 
 static public function lombadosen($id)
 {
-    $return = LombaModel::join('users', 'users.nim', '=', 'lomba.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'lomba' adalah ID pengguna
+    $return = LombaModel::join('users', 'users.nim', '=', 'lomba.nim') 
                 ->select('lomba.*')
                 ->where('users.user_type', '=', 3)
                 ->where('users.perwalian', '=', $id);
@@ -165,7 +165,7 @@ static public function lombadosen($id)
 
 static public function getcsvlombadosen($id)
 {
-    $return = LombaModel::join('users', 'users.nim', '=', 'lomba.nim') // Anda mungkin perlu mengganti 'users.name' dengan 'users.id' jika 'lomba' adalah ID pengguna
+    $return = LombaModel::join('users', 'users.nim', '=', 'lomba.nim') 
                 ->select('lomba.*')
                 ->where('users.user_type', '=', 3)
                 ->where('users.perwalian', '=', $id);

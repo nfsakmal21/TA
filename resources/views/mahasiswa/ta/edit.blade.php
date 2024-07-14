@@ -172,7 +172,7 @@
                     <label>Status</label>
                     <select class="form-control" name="status" value="{{old('status', $getRecord->status)}}">
                       <option value="Seminar Proposal">Seminar Proposal</option>
-                      <option value="Sidang Proposal">Sidang Proposal</option>
+                      <option value="Sidang Akhir">Sidang Akhir</option>
                       <option value="Selesai">Selesai</option>
                     </select>
                   </div>
